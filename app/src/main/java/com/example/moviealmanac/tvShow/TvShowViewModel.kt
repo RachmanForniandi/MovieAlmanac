@@ -1,13 +1,14 @@
 package com.example.tvShowalmanac.tvShow
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.moviealmanac.models.FilmDummy
 
-class TvShowViewModel : ViewModel() {
-    val tvShows = MutableLiveData<List<FilmDummy>>()
-    val tvShowsLoadError= MutableLiveData<Boolean>()
-    val loadingTvShows = MutableLiveData<Boolean>()
+class TvShowViewModel (application: Application): AndroidViewModel(application){
+    val tvShows by lazy {MutableLiveData<List<FilmDummy>>()}
+    val tvShowsLoadError by lazy { MutableLiveData<Boolean>() }
+    val loadingTvShows by lazy { MutableLiveData<Boolean>() }
 
     fun generateDummyTvShow(){
         val tvShow1 = FilmDummy(1412,

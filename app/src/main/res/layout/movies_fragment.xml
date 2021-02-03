@@ -1,16 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshMovie"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".movies.MoviesFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_movie_data"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_movie"/>
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <ProgressBar
+            android:id="@+id/pg_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+
+        <ImageView
+            android:id="@+id/img_no_movie"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_film"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:contentDescription="@string/no_data_available" />
+
+        <TextView
+            android:id="@+id/txt_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/no_data_movie_available"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/img_no_movie"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_movie_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_movie"/>
+
+    </RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

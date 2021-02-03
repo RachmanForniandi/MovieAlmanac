@@ -6,6 +6,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".tvShow.TvShowFragment">
 
+
+    <ProgressBar
+        android:id="@+id/pg_tv_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/img_no_tv_show"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_film"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:contentDescription="@string/no_data_available" />
+
+    <TextView
+        android:id="@+id/txt_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/no_data_movie_available"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/img_no_tv_show"
+        android:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_tvShow_data"
         android:layout_width="match_parent"

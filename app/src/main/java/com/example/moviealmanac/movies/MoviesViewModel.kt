@@ -1,14 +1,21 @@
 package com.example.moviealmanac.movies
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.moviealmanac.models.FilmDummy
 
-class MoviesViewModel : ViewModel() {
+class MoviesViewModel(application: Application): AndroidViewModel(application){
 
-    val movies = MutableLiveData<List<FilmDummy>>()
-    val moviesLoadError = MutableLiveData<Boolean>()
-    val loading = MutableLiveData<Boolean>()
+    val movies by lazy {MutableLiveData<List<FilmDummy>>()}
+    val moviesLoadError by lazy { MutableLiveData<Boolean>() }
+    val loading by lazy { MutableLiveData<Boolean>() }
+
+    /*fun checkIfDataMovieIsEmpty(dummy: List<FilmDummy>){
+        emptyDataMovie.value = dummy.isEmpty()
+        moviesLoadError.value = true
+        loading.value = true
+    }*/
 
     fun generateDummyMovie(){
 
@@ -102,7 +109,7 @@ class MoviesViewModel : ViewModel() {
                 "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
                 8.3)
 
-        val movieList= arrayListOf<FilmDummy>(movie1,movie2,movie3,movie4,movie5,movie6,movie7,movie8,movie9,movie10)
+        val movieList= arrayListOf(movie1,movie2,movie3,movie4,movie5,movie6,movie7,movie8,movie9,movie10)
 
         movies.value = movieList
         moviesLoadError.value = false

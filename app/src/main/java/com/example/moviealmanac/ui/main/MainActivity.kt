@@ -40,6 +40,6 @@ class TabAdapter(fragmentManager: FragmentManager, behavior: Int) : FragmentStat
         else -> MoviesFragment()
     }
 
-    override fun getPageTitle(position: Int): CharSequence? =tabName[position]
+    override fun getPageTitle(position: Int): CharSequence =tabName[position]
 
 }

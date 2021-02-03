@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MovieAlmanac</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="no_data_movie_available">No Data Movie Available</string>
+    <string name="no_data_available">No Data Available</string>
+    <string name="movie_poster">movie poster</string>
 </resources>
