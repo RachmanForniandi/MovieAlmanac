@@ -22,12 +22,12 @@ class TvShowFragment : Fragment() {
     }
 
     private lateinit var viewModel: TvShowViewModel
-    private val tvShowAdapter = MovieAdapter(arrayListOf())
+    //private val tvShowAdapter = MovieAdapter()
 
     private val movieObserver = Observer<List<FilmDummy>>{ list ->
         list.let {
             list_tvShow_data.visibility = View.VISIBLE
-            tvShowAdapter.updateDataMovie(it)
+            //tvShowAdapter.updateDataMovie(it)
         }
     }
 
@@ -60,7 +60,7 @@ class TvShowFragment : Fragment() {
         viewModel.generateDummyTvShow()
 
         list_tvShow_data.apply {
-            adapter = tvShowAdapter
+            //adapter = tvShowAdapter
         }
 
 

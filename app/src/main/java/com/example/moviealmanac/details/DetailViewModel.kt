@@ -5,6 +5,10 @@ import androidx.lifecycle.ViewModel
 import com.example.moviealmanac.models.FilmDummy
 
 class DetailViewModel : ViewModel() {
+    private lateinit var filmId: String
+    fun setSelectedCourse(filmId: String) {
+        this.filmId = filmId
+    }
     val dummyLiveData = MutableLiveData<FilmDummy>()
 
     fun fetchDetailData(){
@@ -15,6 +19,7 @@ class DetailViewModel : ViewModel() {
             "Once home to the most advanced civilization on Earth, Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people and then the surface world. Standing in his way is Arthur Curry, Orm's half-human, half-Atlantean brother and true heir to the throne.",
             "en",
             "/5Kg76ldv7VxeX9YlcQXiowHgdX6.jpg",
+                "/9QusGjxcYvfPD1THg6oW3RLeNn7.jpg",
             6.9)
 
         dummyLiveData.value = exposeDetail

@@ -4,19 +4,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.moviealmanac.BuildConfig
 import com.example.moviealmanac.R
 import com.example.moviealmanac.models.FilmDummy
 import com.example.moviealmanac.utility.getStringDate
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlin.math.roundToInt
 
-class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapter<MovieAdapter.MovieHolder>(){
+class MovieAdapter (private val data: ArrayList<FilmDummy>,var clickListener: OnClickItem): RecyclerView.Adapter<MovieAdapter.MovieHolder>(){
 
-    //private var listMovies = ArrayList<FilmDummy>()
-    //private val clicked: OnClickItem 
+
 
     fun updateDataMovie(cinema:List<FilmDummy>?){
         if (cinema == null) return
@@ -33,9 +31,9 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
-        /*holder.itemView.setOnClickListener {
-            clicked.movieClick(item)
-        }*/
+        holder.itemView.setOnClickListener {
+            clickListener.itemClick(item)
+        }
 
     }
 
@@ -48,12 +46,17 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
 
                 tv_title_movie.text = item.title
                 tv_release_date.text = formatDatePremiere
-                txt_vote_rating.text = convertVote
-                Glide.with(context)
-                        .load(BuildConfig.BASE_URL_IMAGE+ item.posterPath)
-                        .apply(RequestOptions.placeholderOf(R.drawable.place_holder)
-                                .error(R.drawable.ic_error))
-                        .into(img_movie_poster)
+                txt_origin_language.text = item.originalLanguage
+                Picasso
+                    .get()
+                    .load(BuildConfig.BASE_URL_IMAGE_POSTER_PATH+ item.posterPath)
+                    .placeholder(R.drawable.place_holder)
+                            //.override(80, 60)
+                    .error(R.drawable.ic_error)
+                    .centerCrop()
+                    .fit()
+                    //.resize(120, 160)
+                    .into(img_movie_poster)
             }
         }
 
@@ -61,10 +64,9 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
 
     override fun getItemCount(): Int =data.size
 
-    /*interface OnClickItem {
-        fun movieClick(item:FilmDummy?)
-
-    }*/
+    interface OnClickItem {
+        fun itemClick(item:FilmDummy?)
+    }
 }
 
 
