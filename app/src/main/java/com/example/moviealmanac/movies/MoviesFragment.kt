@@ -24,14 +24,8 @@ class MoviesFragment : Fragment() {
         const val KEY_ID = "01"
     }
     private lateinit var viewModel: MoviesViewModel
-    lateinit var movieAdapter: MovieAdapter
+    private val movieAdapter= MovieAdapter(arrayListOf())
 
-    private val movieObserver = Observer<List<FilmDummy>>{list ->
-        list.let {
-            list_movie_data.visibility = View.VISIBLE
-            movieAdapter.updateDataMovie(it)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,12 +39,14 @@ class MoviesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
-        viewModel.movies.observe(viewLifecycleOwner,movieObserver)
-        viewModel.loading.observe(viewLifecycleOwner,loadObserver)
-        viewModel.moviesLoadError.observe(viewLifecycleOwner,errorTestObserver)
-        setupAdapterListener()
         
         viewModel.generateDummyMovie()
+
+        list_movie_data.apply {
+            adapter = movieAdapter
+        }
+        observeViewModel()
+
         swipeRefreshMovie.setOnRefreshListener {
             list_movie_data.visibility = View.GONE
             txt_no_data.visibility = View.GONE
@@ -61,49 +57,30 @@ class MoviesFragment : Fragment() {
 
     }
 
-
-    private fun setupAdapterListener() {
-        list_movie_data.adapter = MovieAdapter(arrayListOf(),object :MovieAdapter.OnClickItem{
-            override fun itemClick(item: FilmDummy?) {
-                startActivity<DetailActivity>(
-                        KEY_ID to item
-                )
+    private fun observeViewModel() {
+        viewModel.movies.observe(viewLifecycleOwner, { movies ->
+            movies.let {
+                list_movie_data.visibility = View.VISIBLE
+                movieAdapter.updateDataMovie(it)
             }
         })
 
-    }
-    private val loadObserver = Observer<Boolean>{ isLoading->
-        pg_movie.visibility = if (isLoading)View.VISIBLE else View.GONE
-        if (isLoading){
-            txt_no_data.visibility = View.GONE
-            list_movie_data.visibility = View.GONE
-        }
-    }
-
-    private val errorTestObserver = Observer<Boolean> { message ->
-        txt_no_data.visibility = if (message)View.VISIBLE else View.GONE
-        img_no_movie.visibility = if (message)View.VISIBLE else View.GONE
-    }
-    /*private fun movieObserver() {
-        viewModel.loading.observe(viewLifecycleOwner, { showLoadingMovie(it) })
-
-        *//*viewModel.movies.observe(viewLifecycleOwner, { movies ->
-            movies.let {
-                list_movie_data.visibility = View.VISIBLE
+        viewModel.loading.observe(viewLifecycleOwner,{isLoading->
+            isLoading.let {
+                pg_movie.visibility = if (it)View.VISIBLE else View.GONE
+                if (it){
+                    txt_no_data.visibility = View.GONE
+                    list_movie_data.visibility = View.GONE
+                }
             }
-        })*//*
-        //list_movie_data.adapter =movieAdapter
+        })
 
-
-
+        viewModel.moviesLoadError.observe(viewLifecycleOwner,{message ->
+            message.let {
+                txt_no_data.visibility = if (message)View.VISIBLE else View.GONE
+                img_no_movie.visibility = if (message)View.VISIBLE else View.GONE
+            }
+        })
     }
-
-    private fun showLoadingMovie(it: Boolean?) {
-        if (it == true){
-            pg_movie.show()
-        }else{
-            pg_movie.hide()
-        }
-    }*/
 
 }

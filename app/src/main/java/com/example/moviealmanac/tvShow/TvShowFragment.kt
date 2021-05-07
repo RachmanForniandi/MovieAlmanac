@@ -22,16 +22,16 @@ class TvShowFragment : Fragment() {
     }
 
     private lateinit var viewModel: TvShowViewModel
-    //private val tvShowAdapter = MovieAdapter()
+    private val tvShowAdapter = MovieAdapter(arrayListOf())
 
-    private val movieObserver = Observer<List<FilmDummy>>{ list ->
+    /*private val movieObserver = Observer<List<FilmDummy>>{ list ->
         list.let {
             list_tvShow_data.visibility = View.VISIBLE
             //tvShowAdapter.updateDataMovie(it)
         }
-    }
+    }*/
 
-    private val loadObserver = Observer<Boolean>{ isLoading->
+    /*private val loadObserver = Observer<Boolean>{ isLoading->
         pg_tv_show.visibility = if (isLoading)View.VISIBLE else View.GONE
         if (isLoading){
             txt_no_data.visibility = View.GONE
@@ -42,7 +42,7 @@ class TvShowFragment : Fragment() {
     private val errorTestObserver = Observer<Boolean> { message ->
         txt_no_data.visibility = if (message)View.VISIBLE else View.GONE
         img_no_tv_show.visibility = if (message)View.VISIBLE else View.GONE
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,19 +51,43 @@ class TvShowFragment : Fragment() {
         return inflater.inflate(R.layout.tv_show_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(TvShowViewModel::class.java)
-        viewModel.tvShows.observe(viewLifecycleOwner,movieObserver)
-        viewModel.loadingTvShows.observe(viewLifecycleOwner,loadObserver)
-        viewModel.tvShowsLoadError.observe(viewLifecycleOwner,errorTestObserver)
         viewModel.generateDummyTvShow()
 
         list_tvShow_data.apply {
-            //adapter = tvShowAdapter
+            adapter = tvShowAdapter
         }
 
-
+        observeViewModelTvShow()
     }
+
+    private fun observeViewModelTvShow() {
+        viewModel.tvShows.observe(viewLifecycleOwner, { tvShows ->
+            tvShows.let {
+            list_tvShow_data.visibility = View.VISIBLE
+                tvShowAdapter.updateDataMovie(tvShows)
+            }
+        })
+
+        viewModel.loadingTvShows.observe(viewLifecycleOwner, { isLoading ->
+            isLoading?.let {
+                pg_tv_show.visibility = if (it)View.VISIBLE else View.GONE
+                if (it){
+                    txt_no_data.visibility = View.GONE
+                    list_tvShow_data.visibility = View.GONE
+                }
+            }
+        })
+        viewModel.tvShowsLoadError.observe(viewLifecycleOwner,{message ->
+            message.let {
+                txt_no_data.visibility = if (message)View.VISIBLE else View.GONE
+                img_no_tv_show.visibility = if (message)View.VISIBLE else View.GONE
+            }
+        })
+    }
+
+
 
 }

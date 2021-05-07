@@ -1,5 +1,6 @@
 package com.example.moviealmanac.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlin.math.roundToInt
 
-class MovieAdapter (private val data: ArrayList<FilmDummy>,var clickListener: OnClickItem): RecyclerView.Adapter<MovieAdapter.MovieHolder>(){
-
-
+class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapter<MovieAdapter.MovieHolder>(){
 
     fun updateDataMovie(cinema:List<FilmDummy>?){
         if (cinema == null) return
@@ -31,15 +30,15 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>,var clickListener: On
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
-        holder.itemView.setOnClickListener {
+        /*holder.itemView.setOnClickListener {
             clickListener.itemClick(item)
-        }
+        }*/
 
     }
 
     inner class MovieHolder (itemView: View):RecyclerView.ViewHolder(itemView){
         fun bind(item: FilmDummy) {
-            val convertVote =item.voteAverage?.div(10.0)?.times(100.0)?.roundToInt().toString()
+            //val convertVote =item.voteAverage?.div(10.0)?.times(100.0)?.roundToInt().toString()
             with(itemView){
 
                 val formatDatePremiere:String = item.releaseDate?.let {  getStringDate(it)}?: "-"
@@ -57,7 +56,13 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>,var clickListener: On
                     .fit()
                     //.resize(120, 160)
                     .into(img_movie_poster)
+                itemView.setOnClickListener {
+                    val intent = Intent()
+                    "toDetail" as FilmDummy
+
+                }
             }
+
         }
 
     }
