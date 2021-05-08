@@ -38,7 +38,12 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
 
     inner class MovieHolder (itemView: View):RecyclerView.ViewHolder(itemView){
         fun bind(item: FilmDummy) {
-            //val convertVote =item.voteAverage?.div(10.0)?.times(100.0)?.roundToInt().toString()
+            //val convertVoteAvg =item.voteAverage?.div(10.0)?.times(100.0)?.roundToInt().toString()
+            val convertVoteAvg =item.voteAverage.toString()
+            val valRating = item.voteAverage?.div(2.0)
+            val valForRateBar= valRating.toString()
+
+
             with(itemView){
 
                 val formatDatePremiere:String = item.releaseDate?.let {  getStringDate(it)}?: "-"
@@ -46,6 +51,9 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
                 tv_title_movie.text = item.title
                 tv_release_date.text = formatDatePremiere
                 txt_origin_language.text = item.originalLanguage
+                tv_rating_value.text = convertVoteAvg
+                rate_rating_bar.rating = valForRateBar.toFloat()
+
                 Picasso
                     .get()
                     .load(BuildConfig.BASE_URL_IMAGE_POSTER_PATH+ item.posterPath)

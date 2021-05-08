@@ -9,69 +9,110 @@
     app:cardElevation="8dp"
     android:padding="16dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_margin="12dp"
-        android:weightSum="3"
-        android:baselineAligned="false">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
-        <LinearLayout
-            android:layout_width="200dp"
+        <ImageView
+            android:id="@+id/img_movie_poster"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="image movie"
+            android:scaleType="centerCrop"
+            android:src="@drawable/place_holder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_movie"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="88dp"
+            android:fontFamily="sans-serif"
+            android:text="Title"
+            android:textColor="@android:color/secondary_text_light"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_poster"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.100000024"
+            />
 
-            <ImageView
-                android:id="@+id/img_movie_poster"
-                android:layout_width="200dp"
-                android:layout_height="160dp"
-                android:layout_margin="8dp"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center"
-                android:src="@drawable/place_holder"
-                android:contentDescription="@string/movie_poster" />
+        <TextView
+            android:id="@+id/txt_origin_language"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_movie"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Eng"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
 
-        </LinearLayout>
+        <RatingBar
+            android:id="@+id/rate_rating_bar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_poster"
+            app:layout_constraintTop_toBottomOf="@+id/txt_origin_language"
+            android:progressTint="@color/colorGold"
+            tools:rating="3.5"
+            android:progressBackgroundTint="@android:color/darker_gray"
+            android:secondaryProgressTint="@color/colorGold"
+            android:stepSize="0.1"
+            android:isIndicator="true" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="2"
-                android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_rating_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Rating"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/rate_rating_bar"
+            app:layout_constraintTop_toBottomOf="@+id/txt_origin_language" />
 
-                <TextView
-                    android:id="@+id/tv_title_movie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:ellipsize="marquee"
-                    android:singleLine="true"
-                    tools:text="Iron Man"
-                    android:lines="4"
-                    android:textSize="28sp"
-                    android:maxLines="4"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_release_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    tools:text="dd/MM/YYYY"
-                    android:textSize="20sp" />
+        <TextView
+            android:id="@+id/lbl_release_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="Release Date"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_poster"
+            app:layout_constraintTop_toTopOf="@id/tv_release_date"
+            app:layout_constraintBottom_toTopOf="@id/tv_release_date"/>
 
-                <TextView
-                    android:id="@+id/txt_origin_language"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    tools:text="En"
-                    android:textAlignment="center"/>
-        </LinearLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_release_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_poster"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_release_date"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="08 Mei 2021" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
