@@ -102,4 +102,7 @@
     <string name="overview">Overview</string>
     <string name="image_poster">Image Poster</string>
     <string name="image_backdrop_path">Image Backdrop Path</string>
+    <string name="release_date">Release Date</string>
+    <string name="rating">Rating</string>
+    <string name="original_language">Original Language</string>
 </resources>

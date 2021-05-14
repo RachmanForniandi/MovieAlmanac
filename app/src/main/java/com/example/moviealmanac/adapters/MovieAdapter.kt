@@ -50,7 +50,16 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
 
                 tv_title_movie.text = item.title
                 tv_release_date.text = formatDatePremiere
-                txt_origin_language.text = item.originalLanguage
+                if (item.originalLanguage.equals("en")){
+                    txt_origin_language.text = "English"
+                }else if(item.originalLanguage.equals("ja")){
+                    txt_origin_language.text = "Japan"
+                }else if(item.originalLanguage.equals("fr")){
+                    txt_origin_language.text = "France"
+                }else{
+                    txt_origin_language.text = ""
+                }
+                //txt_origin_language.text = item.originalLanguage
                 tv_rating_value.text = convertVoteAvg
                 rate_rating_bar.rating = valForRateBar.toFloat()
 

@@ -18,8 +18,7 @@
             android:id="@+id/img_movie_poster"
             android:layout_width="100dp"
             android:layout_height="150dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_margin="8dp"
             android:contentDescription="image movie"
             android:scaleType="centerCrop"
             android:src="@drawable/place_holder"
@@ -46,11 +45,24 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.100000024"
             />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/original_language"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_movie"
+            app:layout_constraintStart_toEndOf="@id/img_movie_poster"
+            />
 
         <TextView
             android:id="@+id/txt_origin_language"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             app:layout_constraintTop_toBottomOf="@id/tv_title_movie"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Eng"
@@ -63,15 +75,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/img_movie_poster"
-            app:layout_constraintTop_toBottomOf="@+id/txt_origin_language"
-            android:progressTint="@color/colorGold"
-            tools:rating="3.5"
+            android:isIndicator="true"
             android:progressBackgroundTint="@android:color/darker_gray"
+            android:progressTint="@color/colorGold"
             android:secondaryProgressTint="@color/colorGold"
             android:stepSize="0.1"
-            android:isIndicator="true" />
+            tools:rating="3.5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_movie_poster"
+            app:layout_constraintTop_toBottomOf="@id/lbl_release_date"
+            app:layout_constraintVertical_bias="1.0"
+             />
 
         <TextView
             android:id="@+id/tv_rating_value"
@@ -79,11 +93,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Rating"
+            android:text="@string/rating"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/rate_rating_bar"
-            app:layout_constraintTop_toBottomOf="@+id/txt_origin_language" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/rate_rating_bar"/>
 
 
         <TextView
@@ -91,25 +105,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="Release Date"
+            android:text="@string/release_date"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toEndOf="@+id/img_movie_poster"
-            app:layout_constraintTop_toTopOf="@id/tv_release_date"
-            app:layout_constraintBottom_toTopOf="@id/tv_release_date"/>
+            app:layout_constraintTop_toBottomOf="@+id/txt_origin_language"/>
 
         <TextView
             android:id="@+id/tv_release_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/img_movie_poster"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_release_date"
+            app:layout_constraintStart_toEndOf="@+id/lbl_release_date"
+            app:layout_constraintTop_toBottomOf="@id/txt_origin_language"
             app:layout_constraintVertical_bias="1.0"
             tools:text="08 Mei 2021" />
 

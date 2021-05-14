@@ -26,8 +26,17 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager_Main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tabLayout_Main"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/navy_host_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/viewPager_Main"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_navigation"
+        class="com.example.moviealmanac.movies.MoviesFragment"/>
 
 </RelativeLayout>
