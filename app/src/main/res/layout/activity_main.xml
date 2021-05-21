@@ -7,13 +7,13 @@
     tools:context=".ui.main.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_match"
+        android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_scrollFlags="scroll|enterAlwaysCollapsed|snap"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <com.google.android.material.tabs.TabLayout
+   <!-- <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout_Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,15 +28,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tabLayout_Main"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>-->
+    <!--<FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>-->
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navy_host_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/viewPager_Main"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_navigation"
-        class="com.example.moviealmanac.movies.MoviesFragment"/>
+        class="com.example.moviealmanac.ui.main.MainFragment"/>
+
 
 </RelativeLayout>

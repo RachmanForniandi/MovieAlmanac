@@ -1,17 +1,18 @@
-package com.example.tvShowalmanac.tvShow
+package com.example.moviealmanac.tvshowpart
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.moviealmanac.models.FilmDummy
+import com.example.moviealmanac.models.TvShowDummy
 
 class TvShowViewModel (application: Application): AndroidViewModel(application){
-    val tvShows by lazy {MutableLiveData<List<FilmDummy>>()}
+
+    val tvShows by lazy {MutableLiveData<List<TvShowDummy>>()}
     val tvShowsLoadError by lazy { MutableLiveData<Boolean>() }
     val loadingTvShows by lazy { MutableLiveData<Boolean>() }
 
     fun generateDummyTvShow(){
-        val tvShow1 = FilmDummy(1412,
+        val tvShow1 = TvShowDummy(1412,
             "Arrow",
             140.526,
             "2012-10-10",
@@ -21,7 +22,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/e6v6RUzAW7xO6OBeLtfOhlCawz6.jpg",
             6.5)
 
-        val tvShow2 = FilmDummy(79501,
+        val tvShow2 = TvShowDummy(79501,
             "Doom Patrol",
             68.289,
             "2019-02-15",
@@ -31,7 +32,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/nVN7Dt0Xr78gnJepRsRLaLYklbY.jpg",
             7.6)
 
-        val tvShow3 = FilmDummy(12971,
+        val tvShow3 = TvShowDummy(12971,
             "Dragon Ball Z",
             169.971,
             "1989-04-26",
@@ -41,7 +42,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/a2L4vWPp2NFHBALWBPyVH5vPk6e.jpg",
             8.1)
 
-        val tvShow4 = FilmDummy(46261,
+        val tvShow4 = TvShowDummy(46261,
             "Fairy Tail",
             26.987,
             "2009-10-12",
@@ -51,7 +52,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/sOzVgRsIjisBMQUxeMjnw1oF40w.jpg",
             7.6)
 
-        val tvShow5 = FilmDummy(1434,
+        val tvShow5 = TvShowDummy(1434,
             "Family guy",
             145.797,
             "1999-01-31",
@@ -61,7 +62,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/8mG1YRVseMBHXlKBCtObcVWZy0B.jpg",
             6.9)
 
-        val tvShow6 = FilmDummy(60735,
+        val tvShow6 = TvShowDummy(60735,
             "The Flash",
             244.514,
             "2014-10-07",
@@ -71,7 +72,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "8xWZPVX1cv9V5YD1RPeLj9QZDE9.jpg",
             7.6)
 
-        val tvShow7 = FilmDummy(1399,
+        val tvShow7 = TvShowDummy(1399,
             "Game Of Thrones",
             324.094,
             "2011-04-17",
@@ -81,7 +82,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/7d3vRgbmnrRQ39Qmzd66bQyY7Is.jpg",
             8.3)
 
-        val tvShow8 = FilmDummy(60708,
+        val tvShow8 = TvShowDummy(60708,
             "Gotham",
             124.673,
             "2014-09-22",
@@ -91,7 +92,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/a47zOXSfa6clj9Vb5Xv2sZg7W3R.jpg",
             7.4)
 
-        val tvShow9 = FilmDummy(1416,
+        val tvShow9 = TvShowDummy(1416,
             "Grey's Anatomy",
             759.096,
             "2005-03-27",
@@ -101,7 +102,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/xoBWd6WNcQKoxfYzcwWRZUiFGtx.jpg",
             8.1)
 
-        val tvShow10 = FilmDummy(54155,
+        val tvShow10 = TvShowDummy(54155,
             "Hanna",
             30.266,
             "2019-03-28",
@@ -111,7 +112,7 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/iYUtjx1EN4SVTgxd2TB4cZTGSQb.jpg",
             7.4)
 
-        val tvShowList= arrayListOf<FilmDummy>(tvShow1,tvShow2,tvShow3,tvShow4,tvShow5,tvShow6,tvShow7,tvShow8,tvShow9,tvShow10)
+        val tvShowList= arrayListOf(tvShow1,tvShow2,tvShow3,tvShow4,tvShow5,tvShow6,tvShow7,tvShow8,tvShow9,tvShow10)
 
         tvShows.value = tvShowList
         tvShowsLoadError.value = false

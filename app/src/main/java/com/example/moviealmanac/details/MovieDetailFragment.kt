@@ -11,13 +11,13 @@ import com.example.moviealmanac.BuildConfig.BASE_URL_IMAGE_DROP_PATH
 import com.example.moviealmanac.BuildConfig.BASE_URL_IMAGE_POSTER_PATH
 import com.example.moviealmanac.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.content_scrolling.*
-import kotlinx.android.synthetic.main.detail_fragment.*
+import kotlinx.android.synthetic.main.content_scrolling_movie.*
+import kotlinx.android.synthetic.main.detail_movie_fragment.*
 
-class DetailFragment : Fragment() {
+class MovieDetailFragment : Fragment() {
 
     companion object {
-        fun newInstance() = DetailFragment()
+        fun newInstance() = MovieDetailFragment()
     }
 
     private lateinit var viewModel: DetailViewModel
@@ -26,7 +26,7 @@ class DetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.detail_fragment, container, false)
+        return inflater.inflate(R.layout.detail_movie_fragment, container, false)
         
     }
 

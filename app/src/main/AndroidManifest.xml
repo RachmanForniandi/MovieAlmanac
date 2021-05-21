@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         -->
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name="com.example.moviealmanac.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".details.DetailActivity"
+            android:name="com.example.moviealmanac.details.DetailActivity"
             android:label="@string/title_activity_detail"
             android:theme="@style/Theme.MovieAlmanac.NoActionBar"/>
     </application>

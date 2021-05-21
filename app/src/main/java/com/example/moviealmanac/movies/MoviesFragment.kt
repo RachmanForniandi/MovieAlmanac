@@ -2,23 +2,16 @@ package com.example.moviealmanac.movies
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import com.example.moviealmanac.R
 import com.example.moviealmanac.adapters.MovieAdapter
-import com.example.moviealmanac.details.DetailActivity
-import com.example.moviealmanac.models.FilmDummy
 import kotlinx.android.synthetic.main.movies_fragment.*
-import org.jetbrains.anko.support.v4.startActivity
 
 class MoviesFragment : Fragment() {
-
-    /*companion object {
-        fun newInstance() = MoviesFragment()
-    }*/
 
     companion object {
         const val KEY_ID = "01"
@@ -45,6 +38,7 @@ class MoviesFragment : Fragment() {
         list_movie_data.apply {
             adapter = movieAdapter
         }
+
         observeViewModel()
 
         swipeRefreshMovie.setOnRefreshListener {
@@ -55,6 +49,7 @@ class MoviesFragment : Fragment() {
             swipeRefreshMovie.isRefreshing = false
         }
 
+        Log.e("testMovie","testmovie"+ observeViewModel())
     }
 
     private fun observeViewModel() {

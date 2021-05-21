@@ -42,7 +42,7 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_scrolling" />
+    <include layout="@layout/content_scrolling_movie" />
 
     <ImageView
         android:id="@+id/img_poster_detail"

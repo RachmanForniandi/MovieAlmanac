@@ -1,6 +1,5 @@
 package com.example.moviealmanac.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,10 @@ import com.example.moviealmanac.models.FilmDummy
 import com.example.moviealmanac.utility.getStringDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
-import kotlin.math.roundToInt
 
 class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapter<MovieAdapter.MovieHolder>(){
 
-    fun updateDataMovie(cinema:List<FilmDummy>?){
+    fun updateDataMovie(cinema: List<FilmDummy>){
         if (cinema == null) return
         data.clear()
         data.addAll(cinema)
@@ -73,11 +71,11 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
                     .fit()
                     //.resize(120, 160)
                     .into(img_movie_poster)
-                itemView.setOnClickListener {
+                /*itemView.setOnClickListener {
                     val intent = Intent()
                     "toDetail" as FilmDummy
 
-                }
+                }*/
             }
 
         }
@@ -86,9 +84,9 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
 
     override fun getItemCount(): Int =data.size
 
-    interface OnClickItem {
+    /*interface OnClickItem {
         fun itemClick(item:FilmDummy?)
-    }
+    }*/
 }
 
 
