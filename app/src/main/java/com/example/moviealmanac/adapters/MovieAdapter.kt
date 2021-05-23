@@ -47,7 +47,7 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
                 val formatDatePremiere:String = item.releaseDate?.let {  getStringDate(it)}?: "-"
 
                 tv_title_movie.text = item.title
-                tv_release_date.text = formatDatePremiere
+                tv_release_date_movie.text = formatDatePremiere
                 if (item.originalLanguage.equals("en")){
                     txt_origin_language.text = "English"
                 }else if(item.originalLanguage.equals("ja")){

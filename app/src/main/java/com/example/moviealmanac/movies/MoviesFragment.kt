@@ -13,9 +13,9 @@ import kotlinx.android.synthetic.main.movies_fragment.*
 
 class MoviesFragment : Fragment() {
 
-    companion object {
+    /*companion object {
         const val KEY_ID = "01"
-    }
+    }*/
     private lateinit var viewModel: MoviesViewModel
     private val movieAdapter= MovieAdapter(arrayListOf())
 

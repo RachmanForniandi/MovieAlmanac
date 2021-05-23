@@ -11,11 +11,6 @@ class MoviesViewModel(application: Application): AndroidViewModel(application){
     val moviesLoadError by lazy { MutableLiveData<Boolean>() }
     val loading by lazy { MutableLiveData<Boolean>() }
 
-    /*fun checkIfDataMovieIsEmpty(dummy: List<FilmDummy>){
-        emptyDataMovie.value = dummy.isEmpty()
-        moviesLoadError.value = true
-        loading.value = true
-    }*/
 
     fun generateDummyMovie(){
 

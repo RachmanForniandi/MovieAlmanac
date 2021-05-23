@@ -14,11 +14,11 @@ import kotlinx.android.synthetic.main.tv_show_fragment.*
 
 class TvShowFragment : Fragment() {
 
-    companion object {
+    /*companion object {
         fun newInstance() = TvShowFragment()
-    }
+    }*/
 
-    private lateinit var viewModel: TvShowViewModel
+    private lateinit var tvShowViewModel: TvShowViewModel
     private val tvShowAdapter = TvShowAdapter(arrayListOf())
 
 
@@ -32,9 +32,9 @@ class TvShowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(TvShowViewModel::class.java)
+        tvShowViewModel = ViewModelProvider(this).get(TvShowViewModel::class.java)
 
-        viewModel.generateDummyTvShow()
+        tvShowViewModel.generateDummyTvShow()
 
         list_tvShow_data.apply {
             adapter = tvShowAdapter
@@ -44,9 +44,9 @@ class TvShowFragment : Fragment() {
 
         swipeRefreshTvShow.setOnRefreshListener {
             list_tvShow_data.visibility = View.GONE
-            txt_no_data.visibility = View.GONE
+            txt_no_data_tv_show.visibility = View.GONE
             pg_tv_show.visibility = View.VISIBLE
-            viewModel.generateDummyTvShow()
+            tvShowViewModel.generateDummyTvShow()
             swipeRefreshTvShow.isRefreshing = false
         }
 
@@ -54,14 +54,14 @@ class TvShowFragment : Fragment() {
     }
 
     private fun observeViewModelTvShow() {
-        viewModel.tvShows.observe(viewLifecycleOwner, { tvShows ->
+        tvShowViewModel.tvShows.observe(viewLifecycleOwner, { tvShows ->
             tvShows.let {
             list_tvShow_data.visibility = View.VISIBLE
                 tvShowAdapter.setDataTvShow(tvShows)
             }
         })
 
-        viewModel.loadingTvShows.observe(viewLifecycleOwner, { isLoading ->
+        tvShowViewModel.loadingTvShows.observe(viewLifecycleOwner, { isLoading ->
             isLoading?.let {
                 pg_tv_show.visibility = if (it)View.VISIBLE else View.GONE
                 if (it){
@@ -70,7 +70,7 @@ class TvShowFragment : Fragment() {
                 }
             }
         })
-        viewModel.tvShowsLoadError.observe(viewLifecycleOwner,{message ->
+        tvShowViewModel.tvShowsLoadError.observe(viewLifecycleOwner,{message ->
             message.let {
                 txt_no_data_tv_show.visibility = if (message)View.VISIBLE else View.GONE
                 img_no_tv_show.visibility = if (message)View.VISIBLE else View.GONE

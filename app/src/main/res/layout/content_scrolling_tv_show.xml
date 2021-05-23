@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txt_name_tv_show_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            tools:text="Iron Man"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/txt_lbl_original_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Original Language"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_name_tv_show_detail"/>
+
+        <TextView
+            android:id="@+id/txt_original_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="English"
+            android:textSize="18sp"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_lbl_original_language"/>
+
+        <TextView
+            android:id="@+id/txt_vote_average_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_marginBottom="16dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/bar_rating_chart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bar_rating_chart"
+            tools:text="9.0" />
+
+        <RatingBar
+            android:id="@+id/bar_rating_chart"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:isIndicator="true"
+            android:progressBackgroundTint="@android:color/darker_gray"
+            android:progressTint="@color/colorGold"
+            android:secondaryProgressTint="@color/colorGold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_original_language"
+            tools:rating="3.5" />
+
+        <TextView
+            android:id="@+id/txt_lbl_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_air_date"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bar_rating_chart"/>
+
+        <TextView
+            android:id="@+id/txt_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="08 Mei 2021"
+            android:textSize="18sp"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_lbl_release_date"/>
+
+
+        <TextView
+            android:id="@+id/txt_label_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/overview"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_release_date"/>
+
+        <TextView
+            android:id="@+id/txt_content_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/overview"
+            android:textSize="18sp"
+            tools:text="Ini Content Overview Film."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_label_overview"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

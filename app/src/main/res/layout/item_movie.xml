@@ -114,7 +114,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_origin_language"/>
 
         <TextView
-            android:id="@+id/tv_release_date"
+            android:id="@+id/tv_release_date_movie"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

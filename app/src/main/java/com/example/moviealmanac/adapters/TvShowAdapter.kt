@@ -15,9 +15,8 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.item_tv_show.view.*
 import kotlinx.android.synthetic.main.item_tv_show.view.txt_origin_language
 
-class TvShowAdapter (private val data: List<TvShowDummy>): RecyclerView.Adapter<TvShowAdapter.TvShowHolder>(){
+class TvShowAdapter (private val listTvShows: ArrayList<TvShowDummy>): RecyclerView.Adapter<TvShowAdapter.TvShowHolder>(){
 
-    private var listTvShows = ArrayList<TvShowDummy>()
 
     fun setDataTvShow(tvShow:List<TvShowDummy>){
         if (tvShow == null) return
@@ -31,13 +30,13 @@ class TvShowAdapter (private val data: List<TvShowDummy>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: TvShowHolder, position: Int) {
-        val item = data[position]
+        val item = listTvShows[position]
         holder.bind(item)
 
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return listTvShows.size
     }
 
     inner class TvShowHolder (itemView: View):RecyclerView.ViewHolder(itemView){
@@ -52,7 +51,7 @@ class TvShowAdapter (private val data: List<TvShowDummy>): RecyclerView.Adapter<
                 val formatDatePremiere:String = item.firstAirDate?.let {  getStringDate(it) }?: "-"
 
                 tv_name_tv_show.text = item.name
-                tv_release_date.text = formatDatePremiere
+                tv_first_air_date.text = formatDatePremiere
                 if (item.originalLanguage.equals("en")){
                     txt_origin_language.text = "English"
                 }else if(item.originalLanguage.equals("ja")){
@@ -75,7 +74,7 @@ class TvShowAdapter (private val data: List<TvShowDummy>): RecyclerView.Adapter<
                         .centerCrop()
                         .fit()
                         //.resize(120, 160)
-                        .into(img_movie_poster)
+                        .into(img_tv_show_poster)
                 /*itemView.setOnClickListener {
                     val intent = Intent()
                     "toDetail" as FilmDummy
