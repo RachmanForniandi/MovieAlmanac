@@ -1,6 +1,5 @@
 package com.example.moviealmanac.models
 
-import java.io.Serializable
 
 data class FilmDummy(
         val id: Int? ,
@@ -12,4 +11,4 @@ data class FilmDummy(
         val posterPath: String?,
         val backdropPath: String?,
         val voteAverage: Double?,
-): Serializable
+)

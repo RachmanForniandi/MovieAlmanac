@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-            android:id="@+id/txt_lbl_original_language"
+            android:id="@+id/txt_lbl_original_language_detail_movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/original_language"
@@ -44,23 +44,23 @@
             android:textSize="18sp"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_original_language"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_lbl_original_language_detail_movie"/>
 
         <TextView
-            android:id="@+id/txt_vote_average_detail"
+            android:id="@+id/txt_vote_average_detail_movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:layout_marginBottom="16dp"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/bar_rating_chart"
+            app:layout_constraintBottom_toBottomOf="@+id/bar_rating_chart_detail_movie"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/bar_rating_chart"
+            app:layout_constraintTop_toTopOf="@id/bar_rating_chart_detail_movie"
             tools:text="9.0" />
 
         <RatingBar
-            android:id="@+id/bar_rating_chart"
+            android:id="@+id/bar_rating_chart_detail_movie"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
             tools:rating="3.5" />
 
         <TextView
-            android:id="@+id/txt_lbl_release_date"
+            android:id="@+id/txt_lbl_release_date_detail_movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/release_date"
@@ -82,21 +82,21 @@
             android:textSize="24sp"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bar_rating_chart"/>
+            app:layout_constraintTop_toBottomOf="@id/bar_rating_chart_detail_movie"/>
 
         <TextView
-            android:id="@+id/txt_release_date"
+            android:id="@+id/txt_release_date_detail_movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="08 Mei 2021"
             android:textSize="18sp"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_release_date"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_lbl_release_date_detail_movie"/>
 
 
         <TextView
-            android:id="@+id/txt_label_overview"
+            android:id="@+id/txt_label_overview_detail_movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
@@ -104,10 +104,10 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_release_date"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_release_date_detail_movie"/>
 
         <TextView
-            android:id="@+id/txt_content_overview"
+            android:id="@+id/txt_content_overview_detail_movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
@@ -115,7 +115,7 @@
             android:textSize="18sp"
             tools:text="Ini Content Overview Film."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_label_overview"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_label_overview_detail_movie"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

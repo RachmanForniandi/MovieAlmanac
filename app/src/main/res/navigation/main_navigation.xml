@@ -23,22 +23,27 @@
         tools:layout="@layout/tv_show_fragment">
         <action
             android:id="@+id/action_navigation_tv_shows_to_navigation_details_tv_show"
-            app:destination="@id/navigation_details_tv_show" />
+            app:destination="@id/navigation_tv_show_details" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_movie_details"
         android:name="com.example.moviealmanac.details.MovieDetailFragment"
-        android:label="Detail Movies"
-        tools:layout="@layout/detail_movie_fragment">
-
+        android:label="Detail Movies">
+        <argument
+            android:name="movieDetails"
+            app:argType="com.example.moviealmanac.models.FilmDummy" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_details_tv_show"
+        android:id="@+id/navigation_tv_show_details"
         android:name="com.example.moviealmanac.details.TvShowDetailFragment"
         android:label="Detail Tv Show"
-        tools:layout="@layout/tv_show_detail_fragment"/>
+        tools:layout="@layout/tv_show_detail_fragment">
+        <argument
+            android:name="tvShowDetails"
+            app:argType="com.example.moviealmanac.models.TvShowDummy" />
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.moviealmanac.ui.main.MainFragment"

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.moviealmanac.R
+import com.example.moviealmanac.tvshowpart.TvShowViewModel
 
 class TvShowDetailFragment : Fragment() {
 
@@ -14,7 +15,7 @@ class TvShowDetailFragment : Fragment() {
         fun newInstance() = TvShowDetailFragment()
     }
 
-    private lateinit var viewModel: TvShowDetailViewModel
+    private lateinit var viewModel: TvShowViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -23,8 +24,12 @@ class TvShowDetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TvShowDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProvider(this).get(TvShowViewModel::class.java)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
 }

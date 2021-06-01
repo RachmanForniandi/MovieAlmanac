@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.moviealmanac.R
 import com.example.moviealmanac.adapters.TvShowAdapter
-import kotlinx.android.synthetic.main.movies_fragment.txt_no_data
+import com.example.moviealmanac.models.FilmDummy
+import com.example.moviealmanac.models.TvShowDummy
+import com.example.moviealmanac.movies.MoviesFragmentDirections
 import kotlinx.android.synthetic.main.tv_show_fragment.*
 
 class TvShowFragment : Fragment() {
@@ -19,7 +22,8 @@ class TvShowFragment : Fragment() {
     }*/
 
     private lateinit var tvShowViewModel: TvShowViewModel
-    private val tvShowAdapter = TvShowAdapter(arrayListOf())
+    private lateinit var tvShowDummy: List<TvShowDummy>
+    private val tvShowAdapter = TvShowAdapter(this@TvShowFragment,arrayListOf())
 
 
     override fun onCreateView(
@@ -34,7 +38,8 @@ class TvShowFragment : Fragment() {
 
         tvShowViewModel = ViewModelProvider(this).get(TvShowViewModel::class.java)
 
-        tvShowViewModel.generateDummyTvShow()
+        tvShowDummy = tvShowViewModel.tvShows
+        tvShowViewModel.responseOnGenerateDummyTvShow()
 
         list_tvShow_data.apply {
             adapter = tvShowAdapter
@@ -46,7 +51,7 @@ class TvShowFragment : Fragment() {
             list_tvShow_data.visibility = View.GONE
             txt_no_data_tv_show.visibility = View.GONE
             pg_tv_show.visibility = View.VISIBLE
-            tvShowViewModel.generateDummyTvShow()
+            tvShowViewModel.responseOnGenerateDummyTvShow()
             swipeRefreshTvShow.isRefreshing = false
         }
 
@@ -54,12 +59,12 @@ class TvShowFragment : Fragment() {
     }
 
     private fun observeViewModelTvShow() {
-        tvShowViewModel.tvShows.observe(viewLifecycleOwner, { tvShows ->
+        /*tvShowViewModel.tvShows.observe(viewLifecycleOwner, { tvShows ->
             tvShows.let {
             list_tvShow_data.visibility = View.VISIBLE
                 tvShowAdapter.setDataTvShow(tvShows)
             }
-        })
+        })*/
 
         tvShowViewModel.loadingTvShows.observe(viewLifecycleOwner, { isLoading ->
             isLoading?.let {
@@ -76,6 +81,11 @@ class TvShowFragment : Fragment() {
                 img_no_tv_show.visibility = if (message)View.VISIBLE else View.GONE
             }
         })
+    }
+
+    fun toTvShowDetails(tvShowDummy: TvShowDummy){
+        findNavController().navigate(TvShowFragmentDirections
+                .actionNavigationTvShowsToNavigationDetailsTvShow(tvShowDummy))
     }
 
 

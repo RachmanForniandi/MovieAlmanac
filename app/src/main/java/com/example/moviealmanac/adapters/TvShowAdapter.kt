@@ -1,27 +1,32 @@
 package com.example.moviealmanac.adapters
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviealmanac.BuildConfig
 import com.example.moviealmanac.R
 import com.example.moviealmanac.models.FilmDummy
 import com.example.moviealmanac.models.TvShowDummy
+import com.example.moviealmanac.movies.MoviesFragment
+import com.example.moviealmanac.tvshowpart.TvShowFragment
 import com.example.moviealmanac.utility.getStringDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.item_tv_show.view.*
 import kotlinx.android.synthetic.main.item_tv_show.view.txt_origin_language
 
-class TvShowAdapter (private val listTvShows: ArrayList<TvShowDummy>): RecyclerView.Adapter<TvShowAdapter.TvShowHolder>(){
+class TvShowAdapter (private var fragment: Fragment, private val listTvShows: ArrayList<TvShowDummy>): RecyclerView.Adapter<TvShowAdapter.TvShowHolder>(){
 
 
-    fun setDataTvShow(tvShow:List<TvShowDummy>){
+    fun setDataTvShow(tvShow:List<TvShowDummy>?){
         if (tvShow == null) return
-        listTvShows.clear()
-        listTvShows.addAll(tvShow)
+        this.listTvShows.clear()
+        this.listTvShows.addAll(tvShow)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowHolder {
@@ -75,24 +80,16 @@ class TvShowAdapter (private val listTvShows: ArrayList<TvShowDummy>): RecyclerV
                         .fit()
                         //.resize(120, 160)
                         .into(img_tv_show_poster)
-                /*itemView.setOnClickListener {
-                    val intent = Intent()
-                    "toDetail" as FilmDummy
+                itemView.setOnClickListener {
+                    fragment = TvShowFragment()
+                    (fragment as TvShowFragment).toTvShowDetails(item)
 
-                }*/
-
-
+                }
             }
         }
 
-
-
     }
 
-    interface OnClickItem {
-        fun tvShowClick(item:TvShowDummy?)
-
-    }
 
 
 }
