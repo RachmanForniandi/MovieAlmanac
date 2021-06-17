@@ -12,7 +12,7 @@ import com.example.moviealmanac.R
 import com.example.moviealmanac.adapters.TvShowAdapter
 import com.example.moviealmanac.models.FilmDummy
 import com.example.moviealmanac.models.TvShowDummy
-import com.example.moviealmanac.movies.MoviesFragmentDirections
+import com.example.moviealmanac.ui.main.MainFragmentDirections
 import kotlinx.android.synthetic.main.tv_show_fragment.*
 
 class TvShowFragment : Fragment() {
@@ -84,8 +84,11 @@ class TvShowFragment : Fragment() {
     }
 
     fun toTvShowDetails(tvShowDummy: TvShowDummy){
-        findNavController().navigate(TvShowFragmentDirections
-                .actionNavigationTvShowsToNavigationDetailsTvShow(tvShowDummy))
+        /*findNavController().navigate(TvShowFragmentDirections
+                .actionNavigationTvShowsToNavigationDetailsTvShow(tvShowDummy))*/
+        findNavController().navigate(
+                MainFragmentDirections.actionMainFragmentToNavigationTvShowDetails
+                (tvShowDummy))
     }
 
 

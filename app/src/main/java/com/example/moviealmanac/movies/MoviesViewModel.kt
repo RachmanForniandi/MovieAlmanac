@@ -7,7 +7,7 @@ import com.example.moviealmanac.models.FilmDummy
 
 class MoviesViewModel(application: Application): AndroidViewModel(application){
 
-    fun getMovies() :List<FilmDummy> = DataMovies.generateDummyMovie()
+    val allMovies :List<FilmDummy> = DataMovies.generateDummyMovie()
     val moviesLoadError by lazy { MutableLiveData<Boolean>() }
     val loading by lazy { MutableLiveData<Boolean>() }
 

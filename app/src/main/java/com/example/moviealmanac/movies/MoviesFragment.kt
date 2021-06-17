@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.moviealmanac.R
 import com.example.moviealmanac.adapters.MovieAdapter
 import com.example.moviealmanac.models.FilmDummy
+import com.example.moviealmanac.ui.main.MainFragmentDirections
 import kotlinx.android.synthetic.main.movies_fragment.*
 
 class MoviesFragment : Fragment() {
@@ -19,7 +20,7 @@ class MoviesFragment : Fragment() {
         const val KEY_ID = "01"
     }*/
     private lateinit var viewModel: MoviesViewModel
-    //private lateinit var filmDummy : List<FilmDummy>
+    private lateinit var filmDummy : List<FilmDummy>
 
     private val movieAdapter= MovieAdapter(this,arrayListOf())
 
@@ -39,18 +40,17 @@ class MoviesFragment : Fragment() {
         
         viewModel.responseOnGenerateDummyMovie()
 
-        val filmDummy = viewModel.getMovies()
+        filmDummy = viewModel.allMovies
 
         list_movie_data.apply {
             adapter = movieAdapter
             movieAdapter.setDataMovie(filmDummy)
 
-            movieAdapter.setOnItemClickListener(object:MovieAdapter.OnItemClickListener{
+            /*movieAdapter.setOnItemClickListener(object:MovieAdapter.OnItemClickListener{
                 override fun onItemClicked(movie: FilmDummy) {
                     toMovieDetails(movie)
                 }
-
-            } )
+            } )*/
         }
 
 
@@ -60,7 +60,8 @@ class MoviesFragment : Fragment() {
             list_movie_data.visibility = View.GONE
             txt_no_data.visibility = View.GONE
             pg_movie.visibility = View.VISIBLE
-            viewModel.getMovies()
+            //viewModel.getMovies()
+            viewModel.allMovies
             swipeRefreshMovie.isRefreshing = false
         }
 
@@ -94,8 +95,10 @@ class MoviesFragment : Fragment() {
     }
 
     fun toMovieDetails(filmDummy: FilmDummy){
-        findNavController().navigate(MoviesFragmentDirections
+        /*findNavController().navigate(MoviesFragmentDirections
                 .actionNavigationMoviesToNavigationMovieDetails(filmDummy))
+        findNavController().navigate(MainFragmentDirections
+                .actionMainFragmentToNavigationMovieDetails(filmDummy))*/
     }
 
 }

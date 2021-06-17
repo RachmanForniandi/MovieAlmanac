@@ -3,12 +3,14 @@ package com.example.moviealmanac.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviealmanac.BuildConfig
 import com.example.moviealmanac.R
 import com.example.moviealmanac.models.FilmDummy
-import com.example.moviealmanac.movies.MoviesFragment
+import com.example.moviealmanac.ui.main.MainFragmentDirections
 import com.example.moviealmanac.utility.getStringDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
@@ -36,10 +38,10 @@ class MovieAdapter (private var fragment: Fragment, private val data: ArrayList<
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
-        holder.itemView.setOnClickListener {
-            /*fragment = MoviesFragment()
-            (fragment as MoviesFragment).toMovieDetails(item)*/
-            onItemClickListener?.onItemClicked(item)
+        holder.itemView.setOnClickListener { view ->
+
+            val bundle = bundleOf("movieId" to item.id)
+            view.findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,bundle)
 
         }
 
@@ -49,13 +51,13 @@ class MovieAdapter (private var fragment: Fragment, private val data: ArrayList<
         fun bind(item: FilmDummy) {
 
             val convertVoteAvg =item.voteAverage.toString()
-            val valRating = item.voteAverage?.div(2.0)
+            val valRating = item.voteAverage.div(2.0)
             val valForRateBar= valRating.toString()
 
 
             with(itemView){
 
-                val formatDatePremiere:String = item.releaseDate?.let {  getStringDate(it)}?: "-"
+                val formatDatePremiere:String = item.releaseDate.let {  getStringDate(it)}?: "-"
 
                 tv_title_movie.text = item.title
                 tv_release_date_movie.text = formatDatePremiere
@@ -78,7 +80,6 @@ class MovieAdapter (private var fragment: Fragment, private val data: ArrayList<
                     .error(R.drawable.ic_error)
                     .centerCrop()
                     .fit()
-                    //.resize(120, 160)
                     .into(img_movie_poster)
             }
 
@@ -86,10 +87,10 @@ class MovieAdapter (private var fragment: Fragment, private val data: ArrayList<
 
     }
 
-    override fun getItemCount(): Int =data.size
+    override fun getItemCount(): Int = data.size
 
     interface OnItemClickListener {
-        fun onItemClicked(movie: FilmDummy)
+        //fun onItemClicked(movie: FilmDummy)
     }
 }
 
