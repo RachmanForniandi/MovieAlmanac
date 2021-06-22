@@ -66,7 +66,6 @@ class TvShowAdapter (private var fragment: Fragment, private val listTvShows: Ar
                 }else{
                     txt_origin_language.text = ""
                 }
-                //txt_origin_language.text = item.originalLanguage
                 tv_tv_show_rating_value.text = convertVoteAvg
                 tv_show_rate_rating_bar.rating = valForRateBar.toFloat()
 

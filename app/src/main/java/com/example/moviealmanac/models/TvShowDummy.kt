@@ -1,5 +1,9 @@
 package com.example.moviealmanac.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class TvShowDummy (
         val id: Int? = null,
         val name: String? = null,
@@ -10,4 +14,4 @@ data class TvShowDummy (
         val posterPath: String? = null,
         val backdropPath: String? = null,
         val voteAverage: Double? = null
-)
+):Parcelable

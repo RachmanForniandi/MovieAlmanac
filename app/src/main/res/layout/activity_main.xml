@@ -20,8 +20,7 @@
         android:layout_height="match_parent"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/main_navigation"
-        class="com.example.moviealmanac.ui.main.MainFragment"/>
+        app:navGraph="@navigation/main_navigation"/>
 
 
 </RelativeLayout>

@@ -38,11 +38,12 @@ class TvShowFragment : Fragment() {
 
         tvShowViewModel = ViewModelProvider(this).get(TvShowViewModel::class.java)
 
-        tvShowDummy = tvShowViewModel.tvShows
         tvShowViewModel.responseOnGenerateDummyTvShow()
+        tvShowDummy = tvShowViewModel.tvShows
 
         list_tvShow_data.apply {
             adapter = tvShowAdapter
+            tvShowAdapter.setDataTvShow(tvShowDummy)
         }
 
         observeViewModelTvShow()
@@ -51,7 +52,7 @@ class TvShowFragment : Fragment() {
             list_tvShow_data.visibility = View.GONE
             txt_no_data_tv_show.visibility = View.GONE
             pg_tv_show.visibility = View.VISIBLE
-            tvShowViewModel.responseOnGenerateDummyTvShow()
+            tvShowDummy
             swipeRefreshTvShow.isRefreshing = false
         }
 
@@ -86,9 +87,9 @@ class TvShowFragment : Fragment() {
     fun toTvShowDetails(tvShowDummy: TvShowDummy){
         /*findNavController().navigate(TvShowFragmentDirections
                 .actionNavigationTvShowsToNavigationDetailsTvShow(tvShowDummy))*/
-        findNavController().navigate(
+        /*findNavController().navigate(
                 MainFragmentDirections.actionMainFragmentToNavigationTvShowDetails
-                (tvShowDummy))
+                (tvShowDummy))*/
     }
 
 

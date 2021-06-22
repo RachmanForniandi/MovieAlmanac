@@ -6,7 +6,8 @@ object DataMovies {
 
     fun generateDummyMovie():List<FilmDummy>{
         val moviesItem: ArrayList<FilmDummy> = ArrayList()
-        moviesItem.add(FilmDummy(332562,
+        moviesItem.add(
+                FilmDummy(332562,
                 "A Star Is Born",
                 847.887,
                 "2018-10-03",

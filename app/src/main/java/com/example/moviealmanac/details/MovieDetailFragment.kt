@@ -2,6 +2,7 @@ package com.example.moviealmanac.details
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,8 +24,7 @@ class MovieDetailFragment : Fragment() {
         fun newInstance() = MovieDetailFragment()
     }
 
-    private lateinit var viewModel: MoviesViewModel
-    //private var film:FilmDummy?= null
+    private lateinit var viewModel: MovieDetailViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -36,23 +36,29 @@ class MovieDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
-        val args: MovieDetailFragmentArgs by navArgs()
+        viewModel = ViewModelProvider(this).get(MovieDetailViewModel::class.java)
 
-        if (args.equals("movieId" to args.idMovie) && args.idMovie !=0){
-            loadDetailDataMovie(viewModel.moviesDetail(args.idMovie))
+        val id = arguments?.getInt("movieId")
+        Log.e("keyDetail",""+id)
+
+
+        if (id != null) {
+            if (id!=0){
+                viewModel.setSelectedCourse(id)
+                loadDetailDataMovie(viewModel.fetchDetailMovie()as FilmDummy)
+            }
+            Log.e("keyUse",""+id)
         }
-
-
-        //loadDetailDataMovie(viewModel.moviesDetail(args))
+        /*if (id != null) {
+            if (id.equals("movieId" to id) && id !=0){
+                loadDetailDataMovie(viewModel.moviesDetail(id))
+            }
+            Log.e("keyUse",""+id)
+        }*/
     }
 
     private fun loadDetailDataMovie(moviesDetail: FilmDummy) {
-        /*Glide.with(requireActivity())
-            .load(moviesDetail.backdropPath)
-            .error(R.drawable.place_holder)
-            .centerCrop()
-            .into(img_back_drop)*/
+
         val backDropPathUrl = BASE_URL_IMAGE_DROP_PATH + moviesDetail.backdropPath
         Picasso.get()
             .load(backDropPathUrl)
@@ -68,11 +74,12 @@ class MovieDetailFragment : Fragment() {
             .error(R.drawable.place_holder)
             .fit().centerCrop()
             .into(img_poster_detail)
+        Log.e("testUrlDetail",""+ moviesDetail.posterPath)
 
         val convertVoteAvg =moviesDetail.voteAverage.toString()
-        val valRating = moviesDetail.voteAverage?.div(2.0)
+        val valRating = moviesDetail.voteAverage.div(2.0)
         val valForRateBar= valRating.toString()
-        val formatDatePremiere:String = moviesDetail.releaseDate?.let {  getStringDate(it) }?: "-"
+        val formatDatePremiere:String = moviesDetail.releaseDate.let {  getStringDate(it) }?: "-"
 
 
         txt_title_movie_detail.text = moviesDetail.title
@@ -93,36 +100,7 @@ class MovieDetailFragment : Fragment() {
         txt_vote_average_detail_movie.text = convertVoteAvg
         bar_rating_chart_detail_movie.rating = valForRateBar.toFloat()
 
-
-
     }
 
-    private fun observeDetail() {
-        /*viewModel.dummyLiveData.observe(viewLifecycleOwner, Observer { detail ->
-            detail.let {
-                val backDropPathUrl = BASE_URL_IMAGE_DROP_PATH + detail.backdropPath
-                Picasso.get()
-                        .load(backDropPathUrl)
-                        .placeholder(R.drawable.place_holder)
-                        .error(R.drawable.place_holder)
-                        .fit().centerCrop()
-                        .into(img_back_drop)
-
-                val posterPathUrl = BASE_URL_IMAGE_POSTER_PATH + detail.posterPath
-                Picasso.get()
-                        .load(posterPathUrl)
-                        .placeholder(R.drawable.place_holder)
-                        .error(R.drawable.place_holder)
-                        .fit().centerCrop()
-                        .into(img_poster_detail)
-
-                txt_title_movie_detail.text = detail?.title
-                txt_vote_average_detail.text = detail?.voteAverage.toString()
-                txt_content_overview.text = detail?.overview
-
-
-            }
-        })*/
-    }
 
 }

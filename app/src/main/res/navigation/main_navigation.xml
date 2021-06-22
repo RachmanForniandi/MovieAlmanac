@@ -17,12 +17,8 @@
             app:destination="@id/movieDetailFragment" />
 
         <action
-            android:id="@+id/action_mainFragment_to_navigation_tv_show_details"
-            app:destination="@id/navigation_tv_show_details" >
-            <argument
-                android:name="keyTv"
-                app:argType="com.example.moviealmanac.models.TvShowDummy" />
-        </action>
+            android:id="@+id/action_mainFragment_to_tvShowDetailFragment"
+            app:destination="@id/tvShowDetailFragment" />
 
     </fragment>
 
@@ -32,22 +28,13 @@
         android:label="Detail Movies"
         tools:layout="@layout/detail_movie_fragment">
 
-        <argument
-            android:name="idMovie"
-            app:argType="integer"
-            android:defaultValue= "0"/>
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_tv_show_details"
+        android:id="@+id/tvShowDetailFragment"
         android:name="com.example.moviealmanac.details.TvShowDetailFragment"
         android:label="Detail Tv Show"
         tools:layout="@layout/tv_show_detail_fragment">
-        <argument
-            android:name="idTv"
-            app:argType="integer"
-            android:defaultValue="0" />
-
     </fragment>
 
 </navigation>

@@ -3,19 +3,16 @@ package com.example.moviealmanac.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviealmanac.BuildConfig
 import com.example.moviealmanac.R
 import com.example.moviealmanac.models.FilmDummy
-import com.example.moviealmanac.ui.main.MainFragmentDirections
 import com.example.moviealmanac.utility.getStringDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MovieAdapter (private var fragment: Fragment, private val data: ArrayList<FilmDummy>): RecyclerView.Adapter<MovieAdapter.MovieHolder>(){
+class MovieAdapter ( private val data: ArrayList<FilmDummy>): RecyclerView.Adapter<MovieAdapter.MovieHolder>(){
 
     private var onItemClickListener: OnItemClickListener? = null
 
@@ -40,9 +37,7 @@ class MovieAdapter (private var fragment: Fragment, private val data: ArrayList<
         holder.bind(item)
         holder.itemView.setOnClickListener { view ->
 
-            val bundle = bundleOf("movieId" to item.id)
-            view.findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,bundle)
-
+            onItemClickListener?.onItemClicked(item)
         }
 
     }
@@ -90,7 +85,7 @@ class MovieAdapter (private var fragment: Fragment, private val data: ArrayList<
     override fun getItemCount(): Int = data.size
 
     interface OnItemClickListener {
-        //fun onItemClicked(movie: FilmDummy)
+        fun onItemClicked(movie: FilmDummy)
     }
 }
 

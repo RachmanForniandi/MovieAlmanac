@@ -7,11 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import com.example.moviealmanac.R
 import com.example.moviealmanac.adapters.MovieAdapter
 import com.example.moviealmanac.models.FilmDummy
-import com.example.moviealmanac.ui.main.MainFragmentDirections
 import kotlinx.android.synthetic.main.movies_fragment.*
 
 class MoviesFragment : Fragment() {
@@ -22,7 +22,7 @@ class MoviesFragment : Fragment() {
     private lateinit var viewModel: MoviesViewModel
     private lateinit var filmDummy : List<FilmDummy>
 
-    private val movieAdapter= MovieAdapter(this,arrayListOf())
+    private val movieAdapter= MovieAdapter(arrayListOf())
 
 
     override fun onCreateView(
@@ -46,11 +46,11 @@ class MoviesFragment : Fragment() {
             adapter = movieAdapter
             movieAdapter.setDataMovie(filmDummy)
 
-            /*movieAdapter.setOnItemClickListener(object:MovieAdapter.OnItemClickListener{
+            movieAdapter.setOnItemClickListener(object:MovieAdapter.OnItemClickListener{
                 override fun onItemClicked(movie: FilmDummy) {
                     toMovieDetails(movie)
                 }
-            } )*/
+            } )
         }
 
 
@@ -60,7 +60,6 @@ class MoviesFragment : Fragment() {
             list_movie_data.visibility = View.GONE
             txt_no_data.visibility = View.GONE
             pg_movie.visibility = View.VISIBLE
-            //viewModel.getMovies()
             viewModel.allMovies
             swipeRefreshMovie.isRefreshing = false
         }
@@ -95,10 +94,12 @@ class MoviesFragment : Fragment() {
     }
 
     fun toMovieDetails(filmDummy: FilmDummy){
-        /*findNavController().navigate(MoviesFragmentDirections
-                .actionNavigationMoviesToNavigationMovieDetails(filmDummy))
-        findNavController().navigate(MainFragmentDirections
-                .actionMainFragmentToNavigationMovieDetails(filmDummy))*/
+
+        val bundle = bundleOf("movieId" to filmDummy.id)
+        view?.let {
+            Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_movieDetailFragment,bundle)
+            Log.e("checkBundle",""+bundle)
+        }
     }
 
 }
