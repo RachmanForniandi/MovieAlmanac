@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.moviealmanac.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -16,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         /*navController = Navigation.findNavController(this,R.id.navy_host_fragment)
         val configuration: AppBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
         NavigationUI.setupActionBarWithNavController(this,navController,configuration)*/

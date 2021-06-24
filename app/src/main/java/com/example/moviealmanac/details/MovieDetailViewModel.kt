@@ -8,7 +8,7 @@ import com.example.moviealmanac.movies.DataMovies
 class MovieDetailViewModel : ViewModel() {
     private var movieId: Int =0
 
-    fun setSelectedCourse(movieId: Int) {
+    fun setSelectedMovie(movieId: Int) {
         this.movieId = movieId
     }
 

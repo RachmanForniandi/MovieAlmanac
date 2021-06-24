@@ -12,6 +12,11 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         setSupportActionBar(findViewById(R.id.toolbar))
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, MovieDetailFragment.newInstance())
+                .commitNow()
+        }
         /*viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         //findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
 

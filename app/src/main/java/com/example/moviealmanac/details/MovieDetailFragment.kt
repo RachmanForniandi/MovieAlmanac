@@ -1,22 +1,22 @@
 package com.example.moviealmanac.details
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.moviealmanac.BuildConfig.BASE_URL_IMAGE_DROP_PATH
 import com.example.moviealmanac.BuildConfig.BASE_URL_IMAGE_POSTER_PATH
 import com.example.moviealmanac.R
 import com.example.moviealmanac.models.FilmDummy
-import com.example.moviealmanac.movies.MoviesViewModel
 import com.example.moviealmanac.utility.getStringDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.content_scrolling_movie.*
 import kotlinx.android.synthetic.main.detail_movie_fragment.*
+
 
 class MovieDetailFragment : Fragment() {
 
@@ -32,6 +32,11 @@ class MovieDetailFragment : Fragment() {
         
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)?.supportActionBar?.hide()
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,7 +49,7 @@ class MovieDetailFragment : Fragment() {
 
         if (id != null) {
             if (id!=0){
-                viewModel.setSelectedCourse(id)
+                viewModel.setSelectedMovie(id)
                 loadDetailDataMovie(viewModel.fetchDetailMovie()as FilmDummy)
             }
             Log.e("keyUse",""+id)

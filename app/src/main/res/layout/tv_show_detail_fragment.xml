@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/Theme.MovieAlmanac.AppBarOverlay">
 
@@ -44,14 +44,6 @@
 
     <include layout="@layout/content_scrolling_tv_show" />
 
-    <ImageView
-        android:id="@+id/img_poster_detail"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|start"
-        android:src="@drawable/place_holder"
-        android:contentDescription="@string/image_poster" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @SuppressLint("SimpleDateFormat")
-fun getStringDate(date: String): String? {
+fun getStringDate(date: String?): String? {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd")
     val outputDate = SimpleDateFormat("EEE, dd MMM yyy")
     var d: Date? = null

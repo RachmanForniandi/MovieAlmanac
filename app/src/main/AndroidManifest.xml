@@ -17,17 +17,12 @@
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
-        <!--
-<activity
-            android:name=".ui.main.DetailActivity"
-            android:label="@string/title_activity_detail">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name=".details.DetailActivity"
+            android:label="@string/title_activity_detail">
         </activity>
-        -->
+
         <activity android:name="com.example.moviealmanac.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,10 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.moviealmanac.details.DetailActivity"
-            android:label="@string/title_activity_detail"
-            android:theme="@style/Theme.MovieAlmanac.NoActionBar"/>
     </application>
 
 </manifest>

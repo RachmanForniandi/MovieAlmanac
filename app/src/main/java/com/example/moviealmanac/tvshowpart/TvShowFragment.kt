@@ -7,12 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import com.example.moviealmanac.R
 import com.example.moviealmanac.adapters.TvShowAdapter
-import com.example.moviealmanac.models.FilmDummy
 import com.example.moviealmanac.models.TvShowDummy
-import com.example.moviealmanac.ui.main.MainFragmentDirections
 import kotlinx.android.synthetic.main.tv_show_fragment.*
 
 class TvShowFragment : Fragment() {
@@ -23,7 +23,7 @@ class TvShowFragment : Fragment() {
 
     private lateinit var tvShowViewModel: TvShowViewModel
     private lateinit var tvShowDummy: List<TvShowDummy>
-    private val tvShowAdapter = TvShowAdapter(this@TvShowFragment,arrayListOf())
+    private val tvShowAdapter = TvShowAdapter(arrayListOf())
 
 
     override fun onCreateView(
@@ -32,6 +32,8 @@ class TvShowFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.tv_show_fragment, container, false)
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,6 +46,11 @@ class TvShowFragment : Fragment() {
         list_tvShow_data.apply {
             adapter = tvShowAdapter
             tvShowAdapter.setDataTvShow(tvShowDummy)
+            tvShowAdapter.setOnItemClickListener(object: TvShowAdapter.OnItemClickListener{
+                override fun onItemClicked(tv: TvShowDummy) {
+                    toTvShowDetails(tv)
+                }
+            } )
         }
 
         observeViewModelTvShow()
@@ -85,11 +92,12 @@ class TvShowFragment : Fragment() {
     }
 
     fun toTvShowDetails(tvShowDummy: TvShowDummy){
-        /*findNavController().navigate(TvShowFragmentDirections
-                .actionNavigationTvShowsToNavigationDetailsTvShow(tvShowDummy))*/
-        /*findNavController().navigate(
-                MainFragmentDirections.actionMainFragmentToNavigationTvShowDetails
-                (tvShowDummy))*/
+
+        val bundle = bundleOf("tvShowId" to tvShowDummy.id)
+        view?.let {
+            Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_tvShowDetailFragment,bundle)
+            Log.e("checkBundle",""+bundle)
+        }
     }
 
 

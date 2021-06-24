@@ -3,7 +3,6 @@ package com.example.moviealmanac.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviealmanac.BuildConfig
 import com.example.moviealmanac.R
