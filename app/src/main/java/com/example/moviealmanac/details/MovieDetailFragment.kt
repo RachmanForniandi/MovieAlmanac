@@ -93,13 +93,13 @@ class MovieDetailFragment : Fragment() {
 
         txt_release_date_detail_movie.text = formatDatePremiere
         if (moviesDetail.originalLanguage.equals("en")){
-            txt_release_date_detail_movie.text = "English"
+            txt_original_language.text = "English"
         }else if(moviesDetail.originalLanguage.equals("ja")){
-            txt_release_date_detail_movie.text = "Japan"
+            txt_original_language.text = "Japan"
         }else if(moviesDetail.originalLanguage.equals("fr")){
-            txt_release_date_detail_movie.text = "France"
+            txt_original_language.text = "France"
         }else{
-            txt_release_date_detail_movie.text = ""
+            txt_original_language.text = ""
         }
 
         txt_vote_average_detail_movie.text = convertVoteAvg

@@ -2,6 +2,7 @@ package com.example.moviealmanac.tvshowpart
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -56,11 +57,10 @@ class TvShowFragment : Fragment() {
         observeViewModelTvShow()
 
         swipeRefreshTvShow.setOnRefreshListener {
-            list_tvShow_data.visibility = View.GONE
-            txt_no_data_tv_show.visibility = View.GONE
-            pg_tv_show.visibility = View.VISIBLE
-            tvShowDummy
-            swipeRefreshTvShow.isRefreshing = false
+            val handler = Handler()
+            handler.postDelayed({
+                swipeRefreshTvShow.isRefreshing = false
+            }, 3000)
         }
 
         Log.e("testTv","testTv"+ observeViewModelTvShow())

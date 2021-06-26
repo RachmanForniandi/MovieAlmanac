@@ -2,6 +2,7 @@ package com.example.moviealmanac.movies
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -57,11 +58,10 @@ class MoviesFragment : Fragment() {
         observeViewModel()
 
         swipeRefreshMovie.setOnRefreshListener {
-            list_movie_data.visibility = View.GONE
-            txt_no_data.visibility = View.GONE
-            pg_movie.visibility = View.VISIBLE
-            viewModel.allMovies
-            swipeRefreshMovie.isRefreshing = false
+            val handler = Handler()
+            handler.postDelayed({
+                swipeRefreshMovie.isRefreshing = false
+            }, 3000)
         }
 
         Log.e("testMovie","testmovie"+ observeViewModel())
