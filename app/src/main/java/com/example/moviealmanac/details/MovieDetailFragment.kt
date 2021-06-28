@@ -32,10 +32,10 @@ class MovieDetailFragment : Fragment() {
         
     }
 
-    override fun onResume() {
+    /*override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)?.supportActionBar?.hide()
-    }
+    }*/
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

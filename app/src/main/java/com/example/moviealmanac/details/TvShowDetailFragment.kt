@@ -31,10 +31,10 @@ class TvShowDetailFragment : Fragment() {
         return inflater.inflate(R.layout.tv_show_detail_fragment, container, false)
     }
 
-    override fun onResume() {
+    /*override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)?.supportActionBar?.hide()
-    }
+    }*/
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
