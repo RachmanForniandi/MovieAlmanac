@@ -109,4 +109,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="first_air_date">First Air Date</string>
     <string name="no_data_tv_show_available">No data Tv Show Available</string>
+    <string name="image_splashscreen">Image SplashScreen</string>
 </resources>
