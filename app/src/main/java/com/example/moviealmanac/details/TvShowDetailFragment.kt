@@ -7,15 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import com.example.moviealmanac.BuildConfig
 import com.example.moviealmanac.R
 import com.example.moviealmanac.models.TvShowDummy
 import com.example.moviealmanac.utility.getStringDate
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.content_scrolling_movie.*
 import kotlinx.android.synthetic.main.content_scrolling_tv_show.*
-import kotlinx.android.synthetic.main.detail_movie_fragment.*
 import kotlinx.android.synthetic.main.tv_show_detail_fragment.*
 
 class TvShowDetailFragment : Fragment() {

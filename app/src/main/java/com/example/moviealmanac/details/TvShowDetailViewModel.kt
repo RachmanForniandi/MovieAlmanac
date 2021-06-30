@@ -1,10 +1,11 @@
 package com.example.moviealmanac.details
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import com.example.moviealmanac.models.TvShowDummy
 import com.example.moviealmanac.tvshowpart.DataTvShow
 
-class TvShowDetailViewModel : ViewModel() {
+class TvShowDetailViewModel(application: Application): AndroidViewModel(application) {
     private var tvShowId: Int =0
 
     fun setSelectedTvShow(tvShowId: Int) {

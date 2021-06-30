@@ -110,7 +110,7 @@ object DataMovies {
         return moviesItem
     }
 
-    fun movieDetail(id: Int): FilmDummy {
+    /*fun movieDetail(id: Int): FilmDummy {
         return generateDummyMovie()[id - 1]
-    }
+    }*/
 }

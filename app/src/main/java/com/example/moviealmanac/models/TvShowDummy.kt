@@ -5,13 +5,13 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class TvShowDummy (
-        val id: Int? = null,
-        val name: String? = null,
-        val popularity: Double? = null,
-        val firstAirDate: String? = null,
-        val overview: String? = null,
-        val originalLanguage: String? = null,
-        val posterPath: String? = null,
-        val backdropPath: String? = null,
-        val voteAverage: Double? = null
+        val id: Int,
+        val name: String,
+        val popularity: Double,
+        val firstAirDate: String,
+        val overview: String,
+        val originalLanguage: String,
+        val posterPath: String,
+        val backdropPath: String,
+        val voteAverage: Double
 ):Parcelable

@@ -11,7 +11,7 @@ class MoviesViewModel(application: Application): AndroidViewModel(application){
     val moviesLoadError by lazy { MutableLiveData<Boolean>() }
     val loading by lazy { MutableLiveData<Boolean>() }
 
-    fun moviesDetail(id: Int):FilmDummy = DataMovies.movieDetail(id)
+    //fun moviesDetail(id: Int):FilmDummy = DataMovies.movieDetail(id)
 
 
 
