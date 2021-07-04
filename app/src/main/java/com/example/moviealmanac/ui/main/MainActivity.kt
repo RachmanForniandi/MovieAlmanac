@@ -18,9 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar_main))
-        /*navController = Navigation.findNavController(this,R.id.navy_host_fragment)
-        val configuration: AppBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
-        NavigationUI.setupActionBarWithNavController(this,navController,configuration)*/
+
         setupNavigation()
 
     }
@@ -31,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
 
-        navController.addOnDestinationChangedListener { _, destination, _ -> // Tambahkan ini
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             when(destination.id) {
                 R.id.mainFragment -> toolbar_main.visibility = View.VISIBLE
                 else -> toolbar_main.visibility = View.GONE
