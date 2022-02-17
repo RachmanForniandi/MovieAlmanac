@@ -8,10 +8,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/USER/StudioProjects/MovieAlmanac/app/src/main/res/layout/content_scrolling_movie.xml" value="0.13768115942028986" />
         <entry key="..\:/Users/USER/StudioProjects/MovieAlmanac/app/src/main/res/layout/content_scrolling_tv_show.xml" value="0.1" />
         <entry key="..\:/Users/USER/StudioProjects/MovieAlmanac/app/src/main/res/layout/detail_movie_fragment.xml" value="0.1" />
         <entry key="..\:/Users/USER/StudioProjects/MovieAlmanac/app/src/main/res/layout/item_movie.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/USER/StudioProjects/MovieAlmanac/app/src/main/res/layout/movies_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/USER/StudioProjects/MovieAlmanac/app/src/main/res/layout/tv_show_detail_fragment.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/USER/StudioProjects/MovieAlmanac/app/src/main/res/layout/tv_show_fragment.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar_main))
 
         setupNavigation()
-
     }
 
     private fun setupNavigation() {

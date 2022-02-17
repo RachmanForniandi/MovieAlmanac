@@ -22,17 +22,18 @@ class MoviesFragmentTest {
 
 
     @Test
-    fun onViewCreated() {
+    fun loadDataMovie() {
         onView(withId(R.id.list_movie_data)).check(matches(isDisplayed()))
         onView(withId(R.id.list_movie_data)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyMovie.size))
-        onView(withId(R.id.tv_title_movie)).check(matches(isDisplayed()))
+        //onView(withId(R.id.tv_title_movie)).check(matches(isDisplayed()))
     }
+
    @Test
     fun toMovieDetails() {
        onView(withId(R.id.list_movie_data)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
        onView(withId(R.id.list_movie_data)).perform(click())
        onView(withId(R.id.img_back_drop)).check(matches(isDisplayed()))
-       onView(withId(R.id.txt_content_overview_detail_movie)).check(matches(withText("Deadline ${dummyMovie[0].overview}")))
+       onView(withId(R.id.txt_title_movie_detail)).check(matches(withText(dummyMovie[0].title)))
     }
 
 }

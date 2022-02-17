@@ -10,7 +10,8 @@ object DataMovies {
                 FilmDummy(332562,
                 "A Star Is Born",
                 847.887,
-                "2018-10-03",
+                "2018-1" +
+                        "0-03",
                 "Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally's career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons.",
                 "en",
                 "/wrFpXMNBRj2PBiN4Z5kix51XaIZ.jpg",
