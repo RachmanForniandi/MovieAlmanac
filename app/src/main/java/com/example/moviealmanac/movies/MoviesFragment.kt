@@ -74,7 +74,6 @@ class MoviesFragment : Fragment() {
                 movieAdapter.updateDataMovie(it)
             }
         })*/
-
         viewModel.loading.observe(viewLifecycleOwner,{isLoading->
             isLoading.let {
                 pg_movie.visibility = if (it)View.VISIBLE else View.GONE
