@@ -1,28 +1,30 @@
 package com.example.moviealmanac.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviealmanac.BuildConfig
 import com.example.moviealmanac.R
-import com.example.moviealmanac.models.FilmDummy
 import com.example.moviealmanac.models.TvShowDummy
 import com.example.moviealmanac.utility.getStringDate
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.item_tv_show.view.*
 import kotlinx.android.synthetic.main.item_tv_show.view.txt_origin_language
 
-class TvShowAdapter (private val data: List<TvShowDummy>): RecyclerView.Adapter<TvShowAdapter.TvShowHolder>(){
+class TvShowAdapter ( private val listTvShows: ArrayList<TvShowDummy>): RecyclerView.Adapter<TvShowAdapter.TvShowHolder>(){
 
-    private var listTvShows = ArrayList<TvShowDummy>()
+    private var onItemClickListener: OnItemClickListener? = null
 
-    fun setDataTvShow(tvShow:List<TvShowDummy>){
+    fun setDataTvShow(tvShow:List<TvShowDummy>?){
         if (tvShow == null) return
-        listTvShows.clear()
-        listTvShows.addAll(tvShow)
+        this.listTvShows.clear()
+        this.listTvShows.addAll(tvShow)
+        notifyDataSetChanged()
+    }
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener){
+        this.onItemClickListener = onItemClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowHolder {
@@ -31,13 +33,17 @@ class TvShowAdapter (private val data: List<TvShowDummy>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: TvShowHolder, position: Int) {
-        val item = data[position]
+        val item = listTvShows[position]
         holder.bind(item)
+        holder.itemView.setOnClickListener { view ->
+
+            onItemClickListener?.onItemClicked(item)
+        }
 
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return listTvShows.size
     }
 
     inner class TvShowHolder (itemView: View):RecyclerView.ViewHolder(itemView){
@@ -52,7 +58,7 @@ class TvShowAdapter (private val data: List<TvShowDummy>): RecyclerView.Adapter<
                 val formatDatePremiere:String = item.firstAirDate?.let {  getStringDate(it) }?: "-"
 
                 tv_name_tv_show.text = item.name
-                tv_release_date.text = formatDatePremiere
+                tv_first_air_date.text = formatDatePremiere
                 if (item.originalLanguage.equals("en")){
                     txt_origin_language.text = "English"
                 }else if(item.originalLanguage.equals("ja")){
@@ -62,7 +68,6 @@ class TvShowAdapter (private val data: List<TvShowDummy>): RecyclerView.Adapter<
                 }else{
                     txt_origin_language.text = ""
                 }
-                //txt_origin_language.text = item.originalLanguage
                 tv_tv_show_rating_value.text = convertVoteAvg
                 tv_show_rate_rating_bar.rating = valForRateBar.toFloat()
 
@@ -75,25 +80,15 @@ class TvShowAdapter (private val data: List<TvShowDummy>): RecyclerView.Adapter<
                         .centerCrop()
                         .fit()
                         //.resize(120, 160)
-                        .into(img_movie_poster)
-                /*itemView.setOnClickListener {
-                    val intent = Intent()
-                    "toDetail" as FilmDummy
-
-                }*/
-
+                        .into(img_tv_show_poster)
 
             }
         }
 
-
-
-    }
-
-    interface OnClickItem {
-        fun tvShowClick(item:TvShowDummy?)
-
     }
 
 
+    interface OnItemClickListener {
+        fun onItemClicked(tvShow: TvShowDummy)
+    }
 }

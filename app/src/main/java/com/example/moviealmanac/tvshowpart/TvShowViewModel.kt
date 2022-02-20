@@ -7,12 +7,14 @@ import com.example.moviealmanac.models.TvShowDummy
 
 class TvShowViewModel (application: Application): AndroidViewModel(application){
 
-    val tvShows by lazy {MutableLiveData<List<TvShowDummy>>()}
+    val tvShows:List<TvShowDummy> = DataTvShow.generateDummyTvShow()
     val tvShowsLoadError by lazy { MutableLiveData<Boolean>() }
     val loadingTvShows by lazy { MutableLiveData<Boolean>() }
 
-    fun generateDummyTvShow(){
-        val tvShow1 = TvShowDummy(1412,
+    fun tvShowsDetail(id:Int):TvShowDummy = DataTvShow.tvShowDetail(id)
+
+    fun responseOnGenerateDummyTvShow(){
+        /*val tvShow1 = TvShowDummy(1412,
             "Arrow",
             140.526,
             "2012-10-10",
@@ -112,11 +114,12 @@ class TvShowViewModel (application: Application): AndroidViewModel(application){
                 "/iYUtjx1EN4SVTgxd2TB4cZTGSQb.jpg",
             7.4)
 
-        val tvShowList= arrayListOf(tvShow1,tvShow2,tvShow3,tvShow4,tvShow5,tvShow6,tvShow7,tvShow8,tvShow9,tvShow10)
+        val tvShowList= arrayListOf(tvShow1,tvShow2,tvShow3,tvShow4,tvShow5,tvShow6,tvShow7,tvShow8,tvShow9,tvShow10)*/
 
-        tvShows.value = tvShowList
+        //tvShows.value = tvShowList
         tvShowsLoadError.value = false
         loadingTvShows.value = false
     }
+
 
 }

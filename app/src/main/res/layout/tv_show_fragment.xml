@@ -11,9 +11,7 @@
     >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
+        android:layout_height="match_parent">
 
         <ProgressBar
             android:id="@+id/pg_tv_show"
@@ -46,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_movie"/>
+            tools:listitem="@layout/item_tv_show"/>
 
 
     </RelativeLayout>

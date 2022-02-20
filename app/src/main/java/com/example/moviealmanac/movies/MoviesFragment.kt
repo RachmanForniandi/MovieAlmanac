@@ -2,21 +2,27 @@ package com.example.moviealmanac.movies
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import com.example.moviealmanac.R
 import com.example.moviealmanac.adapters.MovieAdapter
+import com.example.moviealmanac.models.FilmDummy
 import kotlinx.android.synthetic.main.movies_fragment.*
 
 class MoviesFragment : Fragment() {
 
-    companion object {
+    /*companion object {
         const val KEY_ID = "01"
-    }
+    }*/
     private lateinit var viewModel: MoviesViewModel
+    private lateinit var filmDummy : List<FilmDummy>
+
     private val movieAdapter= MovieAdapter(arrayListOf())
 
 
@@ -33,33 +39,41 @@ class MoviesFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
         
-        viewModel.generateDummyMovie()
+        viewModel.responseOnGenerateDummyMovie()
+
+        filmDummy = viewModel.allMovies
 
         list_movie_data.apply {
             adapter = movieAdapter
+            movieAdapter.setDataMovie(filmDummy)
+
+            movieAdapter.setOnItemClickListener(object:MovieAdapter.OnItemClickListener{
+                override fun onItemClicked(movie: FilmDummy) {
+                    toMovieDetails(movie)
+                }
+            } )
         }
+
 
         observeViewModel()
 
         swipeRefreshMovie.setOnRefreshListener {
-            list_movie_data.visibility = View.GONE
-            txt_no_data.visibility = View.GONE
-            pg_movie.visibility = View.VISIBLE
-            viewModel.generateDummyMovie()
-            swipeRefreshMovie.isRefreshing = false
+            val handler = Handler()
+            handler.postDelayed({
+                swipeRefreshMovie.isRefreshing = false
+            }, 3000)
         }
 
         Log.e("testMovie","testmovie"+ observeViewModel())
     }
 
     private fun observeViewModel() {
-        viewModel.movies.observe(viewLifecycleOwner, { movies ->
+        /*viewModel.movies.observe(viewLifecycleOwner, { movies ->
             movies.let {
                 list_movie_data.visibility = View.VISIBLE
                 movieAdapter.updateDataMovie(it)
             }
-        })
-
+        })*/
         viewModel.loading.observe(viewLifecycleOwner,{isLoading->
             isLoading.let {
                 pg_movie.visibility = if (it)View.VISIBLE else View.GONE
@@ -76,6 +90,15 @@ class MoviesFragment : Fragment() {
                 img_no_movie.visibility = if (message)View.VISIBLE else View.GONE
             }
         })
+    }
+
+    fun toMovieDetails(filmDummy: FilmDummy){
+
+        val bundle = bundleOf("movieId" to filmDummy.id)
+        view?.let {
+            Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_movieDetailFragment,bundle)
+            Log.e("checkBundle",""+bundle)
+        }
     }
 
 }

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".details.DetailActivity"
-    tools:showIn="@layout/activity_detail">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +13,7 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/img_poster_detail"
+            android:id="@+id/img_poster_detail_tv"
             android:layout_width="120dp"
             android:layout_height="180dp"
             android:layout_margin="@dimen/fab_margin"
@@ -26,52 +24,52 @@
             />
 
         <TextView
-            android:id="@+id/txt_title_movie_detail"
+            android:id="@+id/txt_name_tv_show_detail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:textStyle="bold"
             android:textSize="24sp"
             tools:text="Iron Man"
-            app:layout_constraintTop_toBottomOf="@+id/img_poster_detail"
+            app:layout_constraintTop_toBottomOf="@id/img_poster_detail_tv"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-            android:id="@+id/txt_lbl_original_language_detail_movie"
+            android:id="@+id/txt_lbl_original_language_tv_show_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/original_language"
+            android:text="Original Language"
             android:textStyle="bold"
             android:textSize="24sp"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_title_movie_detail"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_name_tv_show_detail"/>
 
         <TextView
-            android:id="@+id/txt_original_language"
+            android:id="@+id/txt_original_language_tv_show_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="English"
             android:textSize="18sp"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_original_language_detail_movie"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_lbl_original_language_tv_show_detail"/>
 
         <TextView
-            android:id="@+id/txt_vote_average_detail_movie"
+            android:id="@+id/txt_vote_average_detail_tv_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:layout_marginBottom="16dp"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/bar_rating_chart_detail_movie"
+            app:layout_constraintBottom_toBottomOf="@+id/bar_rating_chart_tv_show_detail"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/bar_rating_chart_detail_movie"
+            app:layout_constraintTop_toTopOf="@id/bar_rating_chart_tv_show_detail"
             tools:text="9.0" />
 
         <RatingBar
-            android:id="@+id/bar_rating_chart_detail_movie"
+            android:id="@+id/bar_rating_chart_tv_show_detail"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,33 +79,33 @@
             android:progressTint="@color/colorGold"
             android:secondaryProgressTint="@color/colorGold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_original_language"
+            app:layout_constraintTop_toBottomOf="@id/txt_original_language_tv_show_detail"
             tools:rating="3.5" />
 
         <TextView
-            android:id="@+id/txt_lbl_release_date_detail_movie"
+            android:id="@+id/txt_lbl_first_air_date_tv_show_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/release_date"
+            android:text="@string/first_air_date"
             android:textStyle="bold"
             android:textSize="24sp"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bar_rating_chart_detail_movie"/>
+            app:layout_constraintTop_toBottomOf="@id/bar_rating_chart_tv_show_detail"/>
 
         <TextView
-            android:id="@+id/txt_release_date_detail_movie"
+            android:id="@+id/txt_release_date_tv_show_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="08 Mei 2021"
             android:textSize="18sp"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_release_date_detail_movie"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_lbl_first_air_date_tv_show_detail"/>
 
 
         <TextView
-            android:id="@+id/txt_label_overview_detail_movie"
+            android:id="@+id/txt_label_overview_tv_show_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
@@ -115,10 +113,10 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_release_date_detail_movie"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_release_date_tv_show_detail"/>
 
         <TextView
-            android:id="@+id/txt_content_overview_detail_movie"
+            android:id="@+id/txt_content_overview_tv_show_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
@@ -126,9 +124,7 @@
             android:textSize="18sp"
             tools:text="Ini Content Overview Film."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_label_overview_detail_movie"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_label_overview_tv_show_detail"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.core.widget.NestedScrollView>

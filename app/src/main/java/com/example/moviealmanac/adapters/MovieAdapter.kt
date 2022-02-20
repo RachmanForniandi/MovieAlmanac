@@ -11,13 +11,19 @@ import com.example.moviealmanac.utility.getStringDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapter<MovieAdapter.MovieHolder>(){
+class MovieAdapter ( private val data: ArrayList<FilmDummy>): RecyclerView.Adapter<MovieAdapter.MovieHolder>(){
 
-    fun updateDataMovie(cinema: List<FilmDummy>){
+    private var onItemClickListener: OnItemClickListener? = null
+
+    fun setDataMovie(cinema: List<FilmDummy>?){
         if (cinema == null) return
-        data.clear()
-        data.addAll(cinema)
+        this.data.clear()
+        this.data.addAll(cinema)
         notifyDataSetChanged()
+    }
+
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener){
+        this.onItemClickListener = onItemClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
@@ -28,26 +34,27 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
-        /*holder.itemView.setOnClickListener {
-            clickListener.itemClick(item)
-        }*/
+        holder.itemView.setOnClickListener { view ->
+
+            onItemClickListener?.onItemClicked(item)
+        }
 
     }
 
     inner class MovieHolder (itemView: View):RecyclerView.ViewHolder(itemView){
         fun bind(item: FilmDummy) {
-            //val convertVoteAvg =item.voteAverage?.div(10.0)?.times(100.0)?.roundToInt().toString()
+
             val convertVoteAvg =item.voteAverage.toString()
-            val valRating = item.voteAverage?.div(2.0)
+            val valRating = item.voteAverage.div(2.0)
             val valForRateBar= valRating.toString()
 
 
             with(itemView){
 
-                val formatDatePremiere:String = item.releaseDate?.let {  getStringDate(it)}?: "-"
+                val formatDatePremiere:String = item.releaseDate.let {  getStringDate(it)}?: "-"
 
                 tv_title_movie.text = item.title
-                tv_release_date.text = formatDatePremiere
+                tv_release_date_movie.text = formatDatePremiere
                 if (item.originalLanguage.equals("en")){
                     txt_origin_language.text = "English"
                 }else if(item.originalLanguage.equals("ja")){
@@ -57,7 +64,6 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
                 }else{
                     txt_origin_language.text = ""
                 }
-                //txt_origin_language.text = item.originalLanguage
                 tv_rating_value.text = convertVoteAvg
                 rate_rating_bar.rating = valForRateBar.toFloat()
 
@@ -65,28 +71,21 @@ class MovieAdapter (private val data: ArrayList<FilmDummy>): RecyclerView.Adapte
                     .get()
                     .load(BuildConfig.BASE_URL_IMAGE_POSTER_PATH+ item.posterPath)
                     .placeholder(R.drawable.place_holder)
-                            //.override(80, 60)
                     .error(R.drawable.ic_error)
                     .centerCrop()
                     .fit()
-                    //.resize(120, 160)
                     .into(img_movie_poster)
-                /*itemView.setOnClickListener {
-                    val intent = Intent()
-                    "toDetail" as FilmDummy
-
-                }*/
             }
 
         }
 
     }
 
-    override fun getItemCount(): Int =data.size
+    override fun getItemCount(): Int = data.size
 
-    /*interface OnClickItem {
-        fun itemClick(item:FilmDummy?)
-    }*/
+    interface OnItemClickListener {
+        fun onItemClicked(movie: FilmDummy)
+    }
 }
 
 

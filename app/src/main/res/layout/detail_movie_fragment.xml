@@ -2,15 +2,16 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".details.DetailActivity">
+    tools:context=".details.MovieDetailFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/Theme.MovieAlmanac.AppBarOverlay">
 
@@ -44,14 +45,14 @@
 
     <include layout="@layout/content_scrolling_movie" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/img_poster_detail"
         android:layout_width="120dp"
         android:layout_height="160dp"
         android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|start"
+        android:contentDescription="@string/image_poster"
         android:src="@drawable/place_holder"
-        android:contentDescription="@string/image_poster" />
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

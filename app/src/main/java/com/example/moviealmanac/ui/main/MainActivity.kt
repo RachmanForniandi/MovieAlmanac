@@ -2,37 +2,43 @@ package com.example.moviealmanac.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.moviealmanac.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    //private lateinit var navController: NavController
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //val mainManager = supportFragmentManager
-        val mainFragment = MainFragment()
-        /*val fragmentTag = mainManager.findFragmentByTag(MainFragment::class.java.simpleName)
-        if (fragmentTag is MainFragment){
-            mainManager
-                .beginTransaction()
-                .add(R.id.main_container,mainFragment,MainFragment::class.java.simpleName)
-                .commit()
-        }*/
-        //addMainFragment(mainFragment)
-        supportActionBar?.elevation = 0.0f
+        setSupportActionBar(findViewById(R.id.toolbar_main))
 
-
+        setupNavigation()
     }
 
-    private fun addMainFragment(fragment: MainFragment) {
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_container,fragment,fragment.javaClass.simpleName)
-                .commitNow()
+    private fun setupNavigation() {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navy_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        appBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id) {
+                R.id.mainFragment -> toolbar_main.visibility = View.VISIBLE
+                else -> toolbar_main.visibility = View.GONE
+            }
+        }
+        setupActionBarWithNavController(navController,appBarConfiguration)
     }
 
-    /*override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.navy_host_fragment).navigateUp()
-    }*/
+
+    override fun onSupportNavigateUp(): Boolean {
+        return super.onSupportNavigateUp()|| super.onSupportNavigateUp()
+    }
 }

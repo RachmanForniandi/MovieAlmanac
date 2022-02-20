@@ -3,31 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
+    android:label="mainNavigation"
     app:startDestination="@id/mainFragment">
 
+
     <fragment
-        android:id="@+id/navigation_movies"
-        android:name="com.example.moviealmanac.movies.MoviesFragment"
-        android:label="Movies"
-        tools:layout="@layout/movies_fragment">
+        android:id="@+id/mainFragment"
+        android:name="com.example.moviealmanac.ui.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
 
         <action
-            android:id="@+id/action_navigation_movies_to_navigation_movie_details"
-            app:destination="@id/navigation_movie_details" />
+            android:id="@+id/action_mainFragment_to_tvShowDetailFragment"
+            app:destination="@id/tvShowDetailFragment" />
+
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_tv_shows"
-        android:name="com.example.moviealmanac.tvshowpart.TvShowFragment"
-        android:label="Tv Shows"
-        tools:layout="@layout/tv_show_fragment">
-        <action
-            android:id="@+id/action_navigation_tv_shows_to_navigation_details_tv_show"
-            app:destination="@id/navigation_details_tv_show" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_movie_details"
+        android:id="@+id/movieDetailFragment"
         android:name="com.example.moviealmanac.details.MovieDetailFragment"
         android:label="Detail Movies"
         tools:layout="@layout/detail_movie_fragment">
@@ -35,15 +31,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_details_tv_show"
+        android:id="@+id/tvShowDetailFragment"
         android:name="com.example.moviealmanac.details.TvShowDetailFragment"
         android:label="Detail Tv Show"
-        tools:layout="@layout/tv_show_detail_fragment"/>
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.moviealmanac.ui.main.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
-
+        tools:layout="@layout/tv_show_detail_fragment">
+    </fragment>
 
 </navigation>
