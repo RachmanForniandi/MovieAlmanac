@@ -2,8 +2,6 @@ package com.example.moviealmanac.details
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.moviealmanac.models.FilmDummy
 import com.example.moviealmanac.movies.DataMovies
 

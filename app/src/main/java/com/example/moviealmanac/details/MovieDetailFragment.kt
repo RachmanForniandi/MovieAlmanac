@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviealmanac.BuildConfig.BASE_URL_IMAGE_DROP_PATH
@@ -78,32 +77,37 @@ class MovieDetailFragment : Fragment() {
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.place_holder)
             .fit().centerCrop()
-            .into(img_poster_detail)
+            .into(img_poster_detail_movie)
         Log.e("testUrlDetail",""+ moviesDetail.posterPath)
 
         val convertVoteAvg =moviesDetail.voteAverage.toString()
         val valRating = moviesDetail.voteAverage.div(2.0)
         val valForRateBar= valRating.toString()
-        val formatDatePremiere:String = moviesDetail.releaseDate.let {  getStringDate(it) }?: "-"
 
 
         txt_title_movie_detail.text = moviesDetail.title
-        txt_vote_average_detail_movie.text = moviesDetail.voteAverage.toString()
         txt_content_overview_detail_movie.text = moviesDetail.overview
 
-        txt_release_date_detail_movie.text = formatDatePremiere
-        if (moviesDetail.originalLanguage.equals("en")){
-            txt_original_language.text = "English"
-        }else if(moviesDetail.originalLanguage.equals("ja")){
-            txt_original_language.text = "Japan"
-        }else if(moviesDetail.originalLanguage.equals("fr")){
-            txt_original_language.text = "France"
-        }else{
-            txt_original_language.text = ""
-        }
-
         txt_vote_average_detail_movie.text = convertVoteAvg
-        bar_rating_chart_detail_movie.rating = valForRateBar.toFloat()
+        //bar_rating_chart_detail_movie.rating = valForRateBar.toFloat()
+
+
+        val formatDatePremiere:String = moviesDetail.releaseDate.let {  getStringDate(it) }?: "-"
+
+        txt_release_date_detail_movie.text = formatDatePremiere
+        txt_original_language_detail_movie.text = moviesDetail.originalLanguage
+        txt_value_rate_detail_movie.text = valForRateBar
+        /*if (moviesDetail.originalLanguage.equals("en")){
+            txt_original_language_detail_movie.text = "English"
+        }else if(moviesDetail.originalLanguage.equals("ja")){
+            txt_original_language_detail_movie.text = "Japanese"
+        }else if(moviesDetail.originalLanguage.equals("fr")){
+            txt_original_language_detail_movie.text = "French"
+        }else{
+            txt_original_language_detail_movie.text = "Unknown Language"
+        }*/
+
+
 
     }
 

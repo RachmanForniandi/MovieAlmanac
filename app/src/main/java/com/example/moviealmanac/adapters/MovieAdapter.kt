@@ -35,7 +35,6 @@ class MovieAdapter ( private val data: ArrayList<FilmDummy>): RecyclerView.Adapt
         val item = data[position]
         holder.bind(item)
         holder.itemView.setOnClickListener { view ->
-
             onItemClickListener?.onItemClicked(item)
         }
 
@@ -44,28 +43,29 @@ class MovieAdapter ( private val data: ArrayList<FilmDummy>): RecyclerView.Adapt
     inner class MovieHolder (itemView: View):RecyclerView.ViewHolder(itemView){
         fun bind(item: FilmDummy) {
 
-            val convertVoteAvg =item.voteAverage.toString()
-            val valRating = item.voteAverage.div(2.0)
-            val valForRateBar= valRating.toString()
+            //val convertVoteAvg =item.voteAverage.toString()
+            //val valRating = item.voteAverage.div(2.0)
+            //val valForRateBar= valRating.toString()
 
 
             with(itemView){
 
-                val formatDatePremiere:String = item.releaseDate.let {  getStringDate(it)}?: "-"
+                //val formatDatePremiere:String = item.releaseDate.let {  getStringDate(it)}?: "-"
 
                 tv_title_movie.text = item.title
-                tv_release_date_movie.text = formatDatePremiere
-                if (item.originalLanguage.equals("en")){
+                //tv_release_date_movie.text = formatDatePremiere
+                txt_origin_language.text = item.originalLanguage
+                /*if (item.originalLanguage.equals("en")){
                     txt_origin_language.text = "English"
                 }else if(item.originalLanguage.equals("ja")){
                     txt_origin_language.text = "Japan"
                 }else if(item.originalLanguage.equals("fr")){
                     txt_origin_language.text = "France"
                 }else{
-                    txt_origin_language.text = ""
-                }
-                tv_rating_value.text = convertVoteAvg
-                rate_rating_bar.rating = valForRateBar.toFloat()
+                    txt_origin_language.text = "-"
+                }*/
+                /*tv_rating_value.text = convertVoteAvg
+                rate_rating_bar.rating = valForRateBar.toFloat()*/
 
                 Picasso
                     .get()

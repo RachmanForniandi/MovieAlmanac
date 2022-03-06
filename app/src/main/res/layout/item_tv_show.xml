@@ -69,7 +69,7 @@
             android:textStyle="bold"
             android:textSize="18sp"/>
 
-        <RatingBar
+        <!--<RatingBar
             android:id="@+id/tv_show_rate_rating_bar"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
             android:progressBackgroundTint="@android:color/darker_gray"
             android:progressTint="@color/colorGold"
             android:secondaryProgressTint="@color/colorGold"
-            android:stepSize="0.1"
+            android:stepSize="0.5"
             tools:rating="3.5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/img_tv_show_poster"
@@ -97,10 +97,10 @@
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_show_rate_rating_bar"/>
+            app:layout_constraintStart_toEndOf="@id/tv_show_rate_rating_bar"/>-->
 
 
-        <TextView
+        <!--<TextView
             android:id="@+id/lbl_first_air_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -121,10 +121,10 @@
             android:layout_marginStart="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/lbl_release_date"
+            app:layout_constraintStart_toEndOf="@+id/lbl_first_air_date"
             app:layout_constraintTop_toBottomOf="@id/txt_origin_language"
             app:layout_constraintVertical_bias="1.0"
-            tools:text="08 Mei 2021" />
+            tools:text="08 Mei 2021" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

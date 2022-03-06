@@ -70,28 +70,29 @@ class TvShowDetailFragment : Fragment() {
         Log.e("testUrlDetail",""+ tvShowDetail.posterPath)
 
         val convertVoteAvg =tvShowDetail.voteAverage.toString()
-        val valRating = tvShowDetail.voteAverage?.div(2.0)
+        val valRating = tvShowDetail.voteAverage.div(2.0)
         val valForRateBar= valRating.toString()
         val formatDatePremiere:String = tvShowDetail.firstAirDate.let {  getStringDate(it) }?: "-"
 
 
         txt_name_tv_show_detail.text = tvShowDetail.name
-        txt_vote_average_detail_tv_show.text = tvShowDetail.voteAverage.toString()
         txt_content_overview_tv_show_detail.text = tvShowDetail.overview
 
         txt_release_date_tv_show_detail.text = formatDatePremiere
-        if (tvShowDetail.originalLanguage.equals("en")){
+        txt_original_language_tv_show_detail.text =tvShowDetail.originalLanguage
+        /*if (tvShowDetail.originalLanguage.equals("en")){
             txt_original_language_tv_show_detail.text = "English"
         }else if(tvShowDetail.originalLanguage.equals("ja")){
-            txt_original_language_tv_show_detail.text = "Japan"
+            txt_original_language_tv_show_detail.text = "Japanese"
         }else if(tvShowDetail.originalLanguage.equals("fr")){
-            txt_original_language_tv_show_detail.text = "France"
+            txt_original_language_tv_show_detail.text = "French"
         }else{
-            txt_original_language_tv_show_detail.text = ""
-        }
+            txt_original_language_tv_show_detail.text = "Unknown Language"
+        }*/
 
         txt_vote_average_detail_tv_show.text = convertVoteAvg
-        bar_rating_chart_tv_show_detail.rating = valForRateBar.toFloat()
+        txt_value_rate_detail_tv_show.text = valForRateBar
+        //bar_rating_chart_tv_show_detail.rating = valForRateBar.toFloat()
 
     }
 

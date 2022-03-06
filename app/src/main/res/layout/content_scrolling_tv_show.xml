@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="36dp"
         android:padding="10dp">
 
@@ -55,32 +55,75 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_lbl_original_language_tv_show_detail"/>
 
+
+        <TextView
+            android:id="@+id/txt_lbl_detail_rate_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Rate"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/bar_rating_chart_tv_show_detail"
+            app:layout_constraintTop_toBottomOf="@+id/bar_rating_chart_tv_show_detail" />
+
         <TextView
             android:id="@+id/txt_vote_average_detail_tv_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/bar_rating_chart_tv_show_detail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/bar_rating_chart_tv_show_detail"
+            app:layout_constraintStart_toStartOf="@+id/txt_lbl_detail_rate_movie"
+            app:layout_constraintTop_toBottomOf="@+id/txt_lbl_detail_rate_movie"
             tools:text="9.0" />
 
-        <RatingBar
+        <TextView
+            android:id="@+id/txt_lbl_per_max_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="/10.0"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_vote_average_detail_tv_show"
+            app:layout_constraintStart_toEndOf="@+id/txt_vote_average_detail_tv_show" />
+
+        <ImageView
             android:id="@+id/bar_rating_chart_tv_show_detail"
-            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:isIndicator="true"
-            android:progressBackgroundTint="@android:color/darker_gray"
-            android:progressTint="@color/colorGold"
-            android:secondaryProgressTint="@color/colorGold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_original_language_tv_show_detail"
-            tools:rating="3.5" />
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_star"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.37"
+            app:layout_constraintStart_toEndOf="@+id/img_poster_detail_tv"
+            app:layout_constraintTop_toTopOf="@+id/img_poster_detail_tv" />
+
+        <TextView
+            android:id="@+id/txt_value_rate_detail_tv_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_lbl_detail_rate_movie"
+            app:layout_constraintStart_toEndOf="@+id/bar_rating_chart_tv_show_detail"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/txt_lbl_of_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Of 5"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/txt_value_rate_detail_tv_show"
+            app:layout_constraintTop_toTopOf="@+id/txt_value_rate_detail_tv_show" />
+
+
 
         <TextView
             android:id="@+id/txt_lbl_first_air_date_tv_show_detail"
@@ -91,7 +134,7 @@
             android:textSize="24sp"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bar_rating_chart_tv_show_detail"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_original_language_tv_show_detail"/>
 
         <TextView
             android:id="@+id/txt_release_date_tv_show_detail"
@@ -120,7 +163,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
-            android:text="@string/overview"
             android:textSize="18sp"
             tools:text="Ini Content Overview Film."
             app:layout_constraintStart_toStartOf="parent"

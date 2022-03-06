@@ -48,17 +48,17 @@ class TvShowAdapter ( private val listTvShows: ArrayList<TvShowDummy>): Recycler
 
     inner class TvShowHolder (itemView: View):RecyclerView.ViewHolder(itemView){
         fun bind(item: TvShowDummy) {
-            val convertVoteAvg =item.voteAverage.toString()
-            val valRating = item.voteAverage?.div(2.0)
-            val valForRateBar= valRating.toString()
+            //val convertVoteAvg =item.voteAverage.toString()
+            //val valRating = item.voteAverage?.div(2.0)
+            //val valForRateBar= valRating.toString()
 
 
             with(itemView){
 
-                val formatDatePremiere:String = item.firstAirDate?.let {  getStringDate(it) }?: "-"
+                //val formatDatePremiere:String = item.firstAirDate.let {  getStringDate(it) }?: "-"
 
                 tv_name_tv_show.text = item.name
-                tv_first_air_date.text = formatDatePremiere
+                //tv_first_air_date.text = formatDatePremiere
                 if (item.originalLanguage.equals("en")){
                     txt_origin_language.text = "English"
                 }else if(item.originalLanguage.equals("ja")){
@@ -66,10 +66,10 @@ class TvShowAdapter ( private val listTvShows: ArrayList<TvShowDummy>): Recycler
                 }else if(item.originalLanguage.equals("fr")){
                     txt_origin_language.text = "France"
                 }else{
-                    txt_origin_language.text = ""
+                    txt_origin_language.text = "-"
                 }
-                tv_tv_show_rating_value.text = convertVoteAvg
-                tv_show_rate_rating_bar.rating = valForRateBar.toFloat()
+                /*tv_tv_show_rating_value.text = convertVoteAvg
+                tv_show_rate_rating_bar.rating = valForRateBar.toFloat()*/
 
                 Picasso
                         .get()

@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieAlmanac"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.main.SplashScreenActivity">
+        <activity android:name=".ui.main.SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
