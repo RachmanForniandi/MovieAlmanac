@@ -1,17 +1,17 @@
 package com.example.moviealmanac.models
 
-class TvShowDummy (
-        val overview: String? = null,
-        val originalLanguage: String? = null,
-        val genreIds: List<Int?>? = null,
-        val posterPath: String? = null,
-        val originCountry: List<String?>? = null,
-        val backdropPath: String? = null,
-        val originalName: String? = null,
-        val popularity: Double? = null,
-        val voteAverage: Double? = null,
-        val name: String? = null,
-        val firstAirDate: String? = null,
-        val id: Int? = null,
-        val voteCount: Int? = null
-)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class TvShowDummy (
+        val id: Int,
+        val name: String,
+        val popularity: Double,
+        val firstAirDate: String,
+        val overview: String,
+        val originalLanguage: String,
+        val posterPath: String,
+        val backdropPath: String,
+        val voteAverage: Double
+):Parcelable

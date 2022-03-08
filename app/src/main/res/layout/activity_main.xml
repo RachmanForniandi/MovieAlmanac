@@ -7,27 +7,21 @@
     tools:context=".ui.main.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_match"
+        android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_scrollFlags="scroll|enterAlwaysCollapsed|snap"
+        android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout_Main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/design_default_color_primary_dark"
-        app:tabTextColor="@android:color/white"
-        app:tabIndicatorHeight="4dp"
-        app:tabMode="fixed"/>
 
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager_Main"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/navy_host_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tabLayout_Main"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_navigation"/>
+
 
 </RelativeLayout>

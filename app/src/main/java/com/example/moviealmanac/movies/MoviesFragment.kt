@@ -2,11 +2,14 @@ package com.example.moviealmanac.movies
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import com.example.moviealmanac.R
 import com.example.moviealmanac.adapters.MovieAdapter
 import com.example.moviealmanac.models.FilmDummy
@@ -15,31 +18,13 @@ import kotlinx.android.synthetic.main.movies_fragment.*
 class MoviesFragment : Fragment() {
 
     /*companion object {
-        fun newInstance() = MoviesFragment()
+        const val KEY_ID = "01"
     }*/
-
     private lateinit var viewModel: MoviesViewModel
-    private val movieAdapter = MovieAdapter(arrayListOf())
+    private lateinit var filmDummy : List<FilmDummy>
 
-    private val movieObserver = Observer<List<FilmDummy>>{list ->
-        list.let {
-            list_movie_data.visibility = View.VISIBLE
-            movieAdapter.updateDataMovie(it)
-        }
-    }
+    private val movieAdapter= MovieAdapter(arrayListOf())
 
-    private val loadObserver = Observer<Boolean>{ isLoading->
-        pg_movie.visibility = if (isLoading)View.VISIBLE else View.GONE
-        if (isLoading){
-            txt_no_data.visibility = View.GONE
-            list_movie_data.visibility = View.GONE
-        }
-    }
-
-    private val errorTestObserver = Observer<Boolean> { message ->
-        txt_no_data.visibility = if (message)View.VISIBLE else View.GONE
-        img_no_movie.visibility = if (message)View.VISIBLE else View.GONE
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,53 +38,67 @@ class MoviesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
-        viewModel.movies.observe(viewLifecycleOwner,movieObserver)
-        viewModel.loading.observe(viewLifecycleOwner,loadObserver)
-        viewModel.moviesLoadError.observe(viewLifecycleOwner,errorTestObserver)
-        viewModel.generateDummyMovie()
-        /*if (activity != null){
-            val movieAdapter = MovieAdapter(arrayListOf())
-        }*/
-        /*list_movie_data.apply {
+        
+        viewModel.responseOnGenerateDummyMovie()
 
-        }*/
-        //movieObserver()
+        filmDummy = viewModel.allMovies
+
         list_movie_data.apply {
             adapter = movieAdapter
+            movieAdapter.setDataMovie(filmDummy)
+
+            movieAdapter.setOnItemClickListener(object:MovieAdapter.OnItemClickListener{
+                override fun onItemClicked(movie: FilmDummy) {
+                    toMovieDetails(movie)
+                }
+            } )
         }
+
+
+        observeViewModel()
 
         swipeRefreshMovie.setOnRefreshListener {
-            list_movie_data.visibility = View.GONE
-            txt_no_data.visibility = View.GONE
-            pg_movie.visibility = View.VISIBLE
-            viewModel.generateDummyMovie()
-            swipeRefreshMovie.isRefreshing = false
+            val handler = Handler()
+            handler.postDelayed({
+                swipeRefreshMovie.isRefreshing = false
+            }, 3000)
         }
 
-
-
+        Log.e("testMovie","testmovie"+ observeViewModel())
     }
 
-    /*private fun movieObserver() {
-        viewModel.loading.observe(viewLifecycleOwner, { showLoadingMovie(it) })
-
-        *//*viewModel.movies.observe(viewLifecycleOwner, { movies ->
+    private fun observeViewModel() {
+        /*viewModel.movies.observe(viewLifecycleOwner, { movies ->
             movies.let {
                 list_movie_data.visibility = View.VISIBLE
+                movieAdapter.updateDataMovie(it)
             }
-        })*//*
-        //list_movie_data.adapter =movieAdapter
+        })*/
+        viewModel.loading.observe(viewLifecycleOwner,{isLoading->
+            isLoading.let {
+                pg_movie.visibility = if (it)View.VISIBLE else View.GONE
+                if (it){
+                    txt_no_data.visibility = View.GONE
+                    list_movie_data.visibility = View.GONE
+                }
+            }
+        })
 
-
-
+        viewModel.moviesLoadError.observe(viewLifecycleOwner,{message ->
+            message.let {
+                txt_no_data.visibility = if (message)View.VISIBLE else View.GONE
+                img_no_movie.visibility = if (message)View.VISIBLE else View.GONE
+            }
+        })
     }
 
-    private fun showLoadingMovie(it: Boolean?) {
-        if (it == true){
-            pg_movie.show()
-        }else{
-            pg_movie.hide()
+    fun toMovieDetails(filmDummy: FilmDummy){
+
+        val bundle = bundleOf("movieId" to filmDummy.id)
+        view?.let {
+            Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_movieDetailFragment,bundle)
+            Log.e("checkBundle",""+bundle)
         }
-    }*/
+    }
 
 }
