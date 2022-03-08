@@ -110,4 +110,8 @@
     <string name="first_air_date">First Air Date</string>
     <string name="no_data_tv_show_available">No data Tv Show Available</string>
     <string name="image_splashscreen">Image SplashScreen</string>
+    <string name="rate">Rate</string>
+    <string name="_10_0">/10.0</string>
+    <string name="of_5">Of 5</string>
+    <string name="image_rating">image_rating</string>
 </resources>

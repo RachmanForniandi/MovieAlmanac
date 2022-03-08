@@ -17,9 +17,6 @@ import kotlinx.android.synthetic.main.movies_fragment.*
 
 class MoviesFragment : Fragment() {
 
-    /*companion object {
-        const val KEY_ID = "01"
-    }*/
     private lateinit var viewModel: MoviesViewModel
     private lateinit var filmDummy : List<FilmDummy>
 
@@ -68,12 +65,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        /*viewModel.movies.observe(viewLifecycleOwner, { movies ->
-            movies.let {
-                list_movie_data.visibility = View.VISIBLE
-                movieAdapter.updateDataMovie(it)
-            }
-        })*/
+
         viewModel.loading.observe(viewLifecycleOwner,{isLoading->
             isLoading.let {
                 pg_movie.visibility = if (it)View.VISIBLE else View.GONE

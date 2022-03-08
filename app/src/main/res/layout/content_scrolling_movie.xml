@@ -39,7 +39,7 @@
             android:id="@+id/txt_lbl_original_language_movie_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Original Language"
+            android:text="@string/original_language"
             android:textStyle="bold"
             android:textSize="24sp"
             android:layout_margin="16dp"
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Rate"
+            android:text="@string/rate"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/bar_rating_chart_detail_movie"
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="/10.0"
+            android:text="@string/_10_0"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/txt_vote_average_detail_movie"
@@ -100,7 +100,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.37"
             app:layout_constraintStart_toEndOf="@+id/img_poster_detail_movie"
-            app:layout_constraintTop_toTopOf="@+id/img_poster_detail_movie"/>
+            app:layout_constraintTop_toTopOf="@+id/img_poster_detail_movie"
+            android:contentDescription="@string/image_rating" />
 
         <TextView
             android:id="@+id/txt_value_rate_detail_movie"
@@ -118,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Of 5"
+            android:text="@string/of_5"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/txt_value_rate_detail_movie"

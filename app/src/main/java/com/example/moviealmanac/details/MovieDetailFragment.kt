@@ -19,9 +19,7 @@ import kotlinx.android.synthetic.main.detail_movie_fragment.*
 
 class MovieDetailFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MovieDetailFragment()
-    }
+
 
     private lateinit var viewModel: MovieDetailViewModel
 
@@ -30,11 +28,6 @@ class MovieDetailFragment : Fragment() {
         return inflater.inflate(R.layout.detail_movie_fragment, container, false)
         
     }
-
-    /*override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity?)?.supportActionBar?.hide()
-    }*/
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,16 +42,10 @@ class MovieDetailFragment : Fragment() {
         if (id != null) {
             if (id!=0){
                 viewModel.setSelectedMovie(id)
-                loadDetailDataMovie(viewModel.fetchDetailMovie()as FilmDummy)
+                loadDetailDataMovie(viewModel.fetchDetailMovie())
             }
             Log.e("keyUse",""+id)
         }
-        /*if (id != null) {
-            if (id.equals("movieId" to id) && id !=0){
-                loadDetailDataMovie(viewModel.moviesDetail(id))
-            }
-            Log.e("keyUse",""+id)
-        }*/
     }
 
     private fun loadDetailDataMovie(moviesDetail: FilmDummy) {
@@ -89,27 +76,17 @@ class MovieDetailFragment : Fragment() {
         txt_content_overview_detail_movie.text = moviesDetail.overview
 
         txt_vote_average_detail_movie.text = convertVoteAvg
-        //bar_rating_chart_detail_movie.rating = valForRateBar.toFloat()
-
-
         val formatDatePremiere:String = moviesDetail.releaseDate.let {  getStringDate(it) }?: "-"
 
         txt_release_date_detail_movie.text = formatDatePremiere
         txt_original_language_detail_movie.text = moviesDetail.originalLanguage
         txt_value_rate_detail_movie.text = valForRateBar
-        /*if (moviesDetail.originalLanguage.equals("en")){
-            txt_original_language_detail_movie.text = "English"
-        }else if(moviesDetail.originalLanguage.equals("ja")){
-            txt_original_language_detail_movie.text = "Japanese"
-        }else if(moviesDetail.originalLanguage.equals("fr")){
-            txt_original_language_detail_movie.text = "French"
-        }else{
-            txt_original_language_detail_movie.text = "Unknown Language"
-        }*/
 
 
 
     }
 
-
+    companion object {
+        fun newInstance() = MovieDetailFragment()
+    }
 }
