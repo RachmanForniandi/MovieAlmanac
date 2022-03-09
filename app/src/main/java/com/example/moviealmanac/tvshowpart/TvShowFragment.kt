@@ -47,8 +47,8 @@ class TvShowFragment : Fragment() {
             adapter = tvShowAdapter
             tvShowAdapter.setDataTvShow(tvShowDummy)
             tvShowAdapter.setOnItemClickListener(object: TvShowAdapter.OnItemClickListener{
-                override fun onItemClicked(tv: TvShowDummy) {
-                    toTvShowDetails(tv)
+                override fun onItemClicked(tvShow: TvShowDummy) {
+                    toTvShowDetails(tvShow)
                 }
             } )
         }
@@ -73,15 +73,15 @@ class TvShowFragment : Fragment() {
             }
         })*/
 
-        tvShowViewModel.loadingTvShows.observe(viewLifecycleOwner, { isLoading ->
+        tvShowViewModel.loadingTvShows.observe(viewLifecycleOwner) { isLoading ->
             isLoading?.let {
-                pg_tv_show.visibility = if (it)View.VISIBLE else View.GONE
-                if (it){
+                pg_tv_show.visibility = if (it) View.VISIBLE else View.GONE
+                if (it) {
                     txt_no_data_tv_show.visibility = View.GONE
                     list_tvShow_data.visibility = View.GONE
                 }
             }
-        })
+        }
         tvShowViewModel.tvShowsLoadError.observe(viewLifecycleOwner,{message ->
             message.let {
                 txt_no_data_tv_show.visibility = if (message)View.VISIBLE else View.GONE
