@@ -12,19 +12,10 @@ class MoviesViewModel(application: Application): AndroidViewModel(application){
     val loading by lazy { MutableLiveData<Boolean>() }
 
 
-
-
     fun responseOnGenerateDummyMovie(){
 
         moviesLoadError.value = false
         loading.value = false
     }
 
-    /*fun getMovie():FilmDummy{
-        lateinit var film: FilmDummy
-
-        for (filmEntity in allMovies){
-            if (filmEntity.id == id)
-        }
-    }*/
 }

@@ -17,9 +17,7 @@ import kotlinx.android.synthetic.main.tv_show_fragment.*
 
 class TvShowFragment : Fragment() {
 
-    /*companion object {
-        fun newInstance() = TvShowFragment()
-    }*/
+
 
     private lateinit var tvShowViewModel: TvShowViewModel
     private lateinit var tvShowDummy: List<TvShowDummy>
@@ -66,12 +64,6 @@ class TvShowFragment : Fragment() {
     }
 
     private fun observeViewModelTvShow() {
-        /*tvShowViewModel.tvShows.observe(viewLifecycleOwner, { tvShows ->
-            tvShows.let {
-            list_tvShow_data.visibility = View.VISIBLE
-                tvShowAdapter.setDataTvShow(tvShows)
-            }
-        })*/
 
         tvShowViewModel.loadingTvShows.observe(viewLifecycleOwner) { isLoading ->
             isLoading?.let {
@@ -100,5 +92,7 @@ class TvShowFragment : Fragment() {
     }
 
 
-
+companion object {
+        fun newInstance() = TvShowFragment()
+    }
 }

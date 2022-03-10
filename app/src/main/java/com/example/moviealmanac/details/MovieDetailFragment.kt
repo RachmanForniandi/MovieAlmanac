@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.detail_movie_fragment.*
 class MovieDetailFragment : Fragment() {
 
 
-
     private lateinit var viewModel: MovieDetailViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +27,6 @@ class MovieDetailFragment : Fragment() {
         return inflater.inflate(R.layout.detail_movie_fragment, container, false)
         
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -81,8 +79,6 @@ class MovieDetailFragment : Fragment() {
         txt_release_date_detail_movie.text = formatDatePremiere
         txt_original_language_detail_movie.text = moviesDetail.originalLanguage
         txt_value_rate_detail_movie.text = valForRateBar
-
-
 
     }
 
