@@ -42,7 +42,9 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_scrolling_tv_show" />
+    <include
+        android:id="@+id/content_tv_show"
+        layout="@layout/content_scrolling_tv_show" />
 
 
 
